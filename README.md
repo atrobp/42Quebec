@@ -1,7 +1,9 @@
-# 42Quebec
-All cercles are branch specific
+# Cercle2
 
-- [x] [Cercle_0](https://github.com/atrobp/42Quebec/tree/Cercle0).:tada:
-- [x] [Cercle_1](https://github.com/atrobp/42Quebec/tree/Cercle1).:tada:
-- [x] [Cercle_2](https://github.com/atrobp/42Quebec/tree/Cercle2).:tada:
-- [ ] [Cercle_3](https://github.com/atrobp/42Quebec/tree/Cercle3).:writing_hand:
+> *minishell*
+
+`minishell` this project is team of two and we have recreate and behave practically the same as bash (unix shell)
+
+> *philosopher*
+
+`philosopher` project is about handling threads, time execution, thread synchronization and mutex
