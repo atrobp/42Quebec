@@ -1,0 +1,3 @@
+[submodule "minishell/include/readline"]
+	path = minishell/include/readline
+	url = https://git.savannah.gnu.org/git/readline.git
