@@ -1,13 +1,22 @@
-# Cercle1
-> *ft_printf*
+# Cercle2
+> *pipex || minitalk*
 
-`ft_print` project is to recreate printf, but also learn about variadic variables, va_list and variable types.
+`pipex` project is about redirection( << >> ) and pipes( | ) just like how a terminal handles them
+
+`minitalk` project is to create communication between two process using user-defined signals (SIGUSR1 & SIGUSR2)
 
 
-> *get_next_line*
+> *so_long || FdF || fract-ol*
 
-`get_next_line` project is about reading a file one line at a time from a given buffer, here we learn about static variables, but also how to manage char *.
+`so_long || FdF || fract-ol` graphical project using MLX, the purpose of them is about creating, managing windows also as user inputs
 
-> *born2beroot*
+`so_long` is about creating a 2D game
 
-`born2beroot` project is about dealing with an OS just like an admin system.
+`FdF` is about map, text recreation in 2D and 3D
+
+`fract-ol` is about doing factal
+
+
+> *push_swap*
+
+`push_swap` project is about algorithm where you have to deal with a list in integers and order them in increasing using less possible, but aswell as limited movement
