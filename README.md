@@ -8,7 +8,7 @@
 
 > *so_long || FdF || fract-ol*
 
-`so_long || FdF || fract-ol` graphical project using MLX, the purpose of them is about creating, managing windows also as user inputs
+`so_long OR FdF OR fract-ol` graphical project using MLX, the purpose of them is about creating, managing windows also as user inputs
 
 `so_long` is about creating a 2D game
 
