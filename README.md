@@ -19,4 +19,4 @@
 
 > *push_swap*
 
-`push_swap` project is about algorithm where you have to deal with a list in integers and order them in increasing using less possible, but aswell as limited movement
+`push_swap` project is about algorithm where you have to deal with a list in integers and sort them in increasing order using less possible, but aswell as limited movement
