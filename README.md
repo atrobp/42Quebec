@@ -5,6 +5,6 @@ All cercles are branch specific :nerd_face:
 - [x] [Cercle_1](https://github.com/atrobp/42Quebec/tree/Cercle1).:tada:
 - [x] [Cercle_2](https://github.com/atrobp/42Quebec/tree/Cercle2).:tada:
 - [ ] [Cercle_3](https://github.com/atrobp/42Quebec/tree/Cercle3).:writing_hand:
-- [ ] Cercle_4.::neutral_face::
+- [ ] Cercle_4.::neutral_face:
 - [ ] Cercle_5.::worried:
 - [ ] Cercle_6.:alien:
