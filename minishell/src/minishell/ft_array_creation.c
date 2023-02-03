@@ -6,31 +6,35 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:23:41 by atopalli          #+#    #+#             */
-/*   Updated: 2023/01/31 18:17:03 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/02 19:32:11 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_minishell.h"
 
-char	**ft_create_env_table(char **env)
+t_arg	ft_create_env_table(char **env, char *todo)
 {
+	t_arg	args;
 	int		arg_len;
-	char	**temp;
 
+	if (ft_strcmp(todo, "create") == 0)
+		args.user = getenv("USER");
 	arg_len = 0;
 	while (env[arg_len] != NULL)
 		arg_len += 1;
-	temp = malloc(sizeof(env) * arg_len + 1);
-	if (temp)
+	args.env_args = malloc(sizeof(env) * arg_len + 2);
+	if (args.env_args)
 	{
 		arg_len = 0;
 		while (env[arg_len] != NULL)
 		{
-			temp[arg_len] = malloc(sizeof(char) * ft_strlen(env[arg_len]) + 1);
-			ft_strcpy(env[arg_len], temp[arg_len]);
+			args.env_args[arg_len] = malloc(sizeof(char) * ft_strlen(env[arg_len]) + 1);
+			ft_strcpy(env[arg_len], args.env_args[arg_len]);
 			arg_len += 1;
 		}
-		return (temp);
+		if (ft_strcmp(todo, "add") == 0)
+			args.env_args[arg_len++] = malloc(sizeof(char) * ft_strlen("test") + 1);
+		args.env_args[arg_len] = NULL;
 	}
-	return (NULL);
+	return (args);
 }

@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:49:11 by atopalli          #+#    #+#             */
-/*   Updated: 2023/01/31 23:53:49 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/02 19:33:14 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,26 @@
 
 void	ft_writeprompt(t_arg *args)
 {
+	int		i;
 	char	*command;
-	char	*prev_command;
-	int		call;
 
-	call = -1;
 	while (1)
 	{
+		i = 0;
 		write(1, KGRN, ft_strlen(KGRN));
 		write(1, args->user, ft_strlen(args->user));
 		write(1, KNRM, ft_strlen(KNRM));
-		command = readline("@minishelt>");
-		if (command[0] != ' ')
+		command = ft_trimme(readline("@minishelt>"));
+		if (ft_strcmp(command, "export") == 0)
 		{
-			if (++call == 0)
+			while (args->env_args[i])
 			{
-				prev_command = ft_strdup(command);
-				add_history(prev_command);
-			}
-			else if (ft_strcmp(prev_command, command))
-			{
-				free(prev_command);
-				prev_command = ft_strdup(command);
-				add_history(prev_command);
+				write(1, args->env_args[i], ft_strlen(args->env_args[i]));
+				write(1, "\n", 1);
+				i += 1;
 			}
 		}
-		command = ft_trimme(command);
-		system(command);
+		else
+			system(command);
 	}
 }

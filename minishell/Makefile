@@ -6,7 +6,7 @@
 #    By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 17:07:30 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/01 00:18:20 by atopalli         ###   ########.fr        #
+#    Updated: 2023/02/02 19:36:08 by atopalli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,3 +27,6 @@ norm:
 
 clean:
 	$(RM) $(OFILES)
+
+fclean: clean
+	$(RM) $(NAME)

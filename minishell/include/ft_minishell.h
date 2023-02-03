@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:23:53 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/01 00:18:12 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/02 19:31:14 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@
 
 typedef struct s_arg
 {
-	char	**local_args;
+	char	*local_args;
 	char	**env_args;
 	char	*user;
 }		t_arg;
 
 /*         src -- minishell         */
 //ft_array_creation
-char	**ft_create_env_table(char **env);
+t_arg	ft_create_env_table(char **env, char *todo);
 
 //ft_functions
 void	ft_strcpy(char *src, char *dst);
