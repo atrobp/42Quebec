@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:23:53 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/02 19:31:14 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/02 22:36:44 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 typedef struct s_arg
 {
+	char	*cmd_check[5];
 	char	*local_args;
 	char	**env_args;
 	char	*user;

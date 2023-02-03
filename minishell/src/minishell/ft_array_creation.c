@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:23:41 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/02 19:32:11 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/02 22:38:05 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ t_arg	ft_create_env_table(char **env, char *todo)
 	t_arg	args;
 	int		arg_len;
 
+	args.cmd_check[0] = "unset";
+	args.cmd_check[1] = "export";
+	args.cmd_check[2] = "env";
+	args.cmd_check[3] = "exit";
 	if (ft_strcmp(todo, "create") == 0)
 		args.user = getenv("USER");
 	arg_len = 0;
