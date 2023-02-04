@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:23:53 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/02 22:36:44 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/03 19:09:04 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,9 @@ int		ft_strcmp(char *s1, char *s2);
 
 //ft_prompt_stuff
 void	ft_writeprompt(t_arg *args);
+
+//ft_custom_op
+int		ft_operation_caller(t_arg *args, char *command);
+void	ft_print_env(t_arg *args);
 
 #endif
