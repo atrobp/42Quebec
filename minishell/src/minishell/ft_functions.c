@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:30 by atopalli          #+#    #+#             */
-/*   Updated: 2023/01/31 22:51:39 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/04 10:46:55 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	*ft_trimme(char *str)
 	return (str);
 }
 
-char	*ft_strdup(char *str)
+char	*ft_strdup(char *str, char *command)
 {
 	int		i;
 	char	*dup;
@@ -76,6 +76,12 @@ char	*ft_strdup(char *str)
 		{
 			dup[i] = str[i];
 			i += 1;
+		}
+		while (*command)
+		{
+			dup[i] = *command;
+			i += 1;
+			command += 1;
 		}
 		dup[i] = 0;
 		return (dup);
