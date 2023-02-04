@@ -1,0 +1,3 @@
+since we cannot share vm, use this very simple docker centos image
+
+docker pull centos:7
