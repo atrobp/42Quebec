@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:49:11 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/03 21:07:16 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/03 21:11:02 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,5 @@ void	ft_writeprompt(t_arg *args)
 		write(1, args->user, ft_strlen(args->user));
 		write(1, KNRM, ft_strlen(KNRM));
 		command = ft_trimme(readline("@minishelt> "));
-		if (ft_operation_caller(args, command) != 4)
-			system(command);
 	}
 }
