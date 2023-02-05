@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:57:29 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/05 13:03:27 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/05 16:36:55 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ t_env	ft_add_env(t_env *args, char *str)
 
 	temp = malloc(sizeof(char*) * ft_strlen(str, '=') + 1);
 	ft_strcpy(str, temp, '=');
+	if (ft_getenv(temp, args) == NULL)
+	{
+
+	}
+	return (*args);
 }
 
 t_env	ft_delete_arg(t_env *args, char *removeme)

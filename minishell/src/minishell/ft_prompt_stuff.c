@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:49:11 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/05 11:49:33 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/05 16:29:21 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	*ft_trimstr(char *str)
 t_env	ft_sendcommand(t_env *args, char *cmd)
 {
 	int		i;
-	t_env	(*cmd_func[3])(t_env *, char *);
+	t_env	(*cmd_func[4])(t_env *, char *);
 	args->special_cmds[0] = ft_strdup("unset ", cmd + ft_strlen(cmd, ' ') + 1);
 	args->special_cmds[1] = "export";
 	args->special_cmds[2] = ft_strdup("export ", cmd + ft_strlen(cmd, ' ') + 1);
