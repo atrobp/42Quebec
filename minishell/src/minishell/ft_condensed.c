@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_condensed.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 17:03:22 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/04 21:31:01 by atopalli         ###   ########.fr       */
+/*   Created: 2023/02/04 21:33:33 by atopalli          #+#    #+#             */
+/*   Updated: 2023/02/04 21:43:07 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_minishell.h"
 
-int	main(int ac, char *av[], char *env[])
+int	ft_str_len_cpy_diff(char *s1, char *s2, char todo)
 {
-	t_env	args;
+	int	i;
 
-	(void)ac;
-	(void)av;
-	(void)env;
-	args = ft_create_env(env);
-	args.user = ft_getenv("USER", &args);
-	ft_writeprompt(&args);
-	return (0);
+	i = 0;
+	while (todo == 'd')
+	{
+		if (!(s2[i] || s1[i]) || s2[i] != s1[i])
+			return (s2[i] - s1[i]);
+		i += 1;
+	}
+	while (s2[i])
+	{
+		if (todo == 'c')
+			s1[i] = s2[i];
+		i += 1;
+	}
+	if (todo == 'c')
+		s1[i] = 0;
+	return (i);
 }

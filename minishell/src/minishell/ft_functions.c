@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:30 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/04 19:20:03 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:31:14 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,18 @@ int	ft_strlen(char *str, char stopat)
 	return (len);
 }
 
-int	ft_getenv(char *name, char **env_name)
+char	*ft_getenv(char *name, t_env *env)
 {
 	int	i;
 
 	i = 0;
-	while (env_name[i])
+	while (env->arg[i])
 	{
-		if (ft_strcmp(name, env_name[i]) == 0)
-			return (0);
+		if (ft_strcmp(name, env->arg[i]) == 0)
+			return (env->arg_value[i]);
 		i += 1;
 	}
-	return (1);
+	return (0);
 }
 
 char	*ft_strdup(char *str, char *command)
