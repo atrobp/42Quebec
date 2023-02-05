@@ -6,21 +6,18 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:57:29 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/05 10:23:49 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/05 13:03:27 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_minishell.h"
 
-int	ft_add_env(t_arg *args, char *str)
+t_env	ft_add_env(t_env *args, char *str)
 {
-	int		len;
+	char	*temp;
 
-	len = ft_strlen(str, 0);
-	while (str[--len] > ' ')
-		;
-	args->env_args = ft_create_env_table(args->env_args, "add", str + len + 1);
-	return (0);
+	temp = malloc(sizeof(char*) * ft_strlen(str, '=') + 1);
+	ft_strcpy(str, temp, '=');
 }
 
 t_env	ft_delete_arg(t_env *args, char *removeme)
@@ -30,8 +27,9 @@ t_env	ft_delete_arg(t_env *args, char *removeme)
 	i = 0;
 	while (args->arg[i])
 	{
-		if (ft_strcmp(remove, args->arg[i]) == 0)
+		if (ft_strcmp(removeme, args->arg[i]) == 0)
 		{
+			printf("%s", args->arg[i]);
 			while (args->arg[i])
 			{
 				args->arg[i] = args->arg[i + 1];
@@ -44,35 +42,34 @@ t_env	ft_delete_arg(t_env *args, char *removeme)
 	return (*args);
 }
 
-int	ft_print_env(t_arg *args, char *str)
+t_env	ft_print_env(t_env *args, char *cmd)
 {
 	int	i;
 
 	i = 0;
-	while (args->env_args[i] != NULL)
+	while (args->arg[i] != NULL)
 	{
-		if (ft_strcmp("export", str) == 0)
+		if (ft_strcmp("export", cmd) == 0)
 			write(1, "export -x ", 10);
-		write(1, args->env_args[i], ft_strlen(args->env_args[i], 0));
-		write(1, "\n", 1);
+		printf("%s=%s\n", args->arg[i], args->arg_value[i]);
 		i += 1;
 	}
-	return (0);
+	return (*args);
 }
 
 int	ft_operation_caller(t_arg *args, char *command)
 {
 	int		i;
-	int		(*ptr_func[5])(t_arg *, char *);
+	// int		(*ptr_func[5])(t_arg *, char *);
 	int		len;
 
 	len = ft_strlen(command, 0);
 	while (command[--len] > ' ')
 		;
 	i = 0;
-	ptr_func[1] = ft_print_env;
-	ptr_func[2] = ft_print_env;
-	ptr_func[4] = ft_add_env;
+	// ptr_func[1] = ft_print_env;
+	// ptr_func[2] = ft_print_env;
+	// ptr_func[4] = ft_add_env;
 	args->cmd_check[0] = "unset";
 	args->cmd_check[1] = "export";
 	args->cmd_check[2] = "env";
@@ -81,7 +78,7 @@ int	ft_operation_caller(t_arg *args, char *command)
 	while (i < 5)
 	{
 		if (ft_strcmp(args->cmd_check[i], command) == 0)
-			return (ptr_func[i](args, command + len + 1));
+			// return (ptr_func[i](args, command + len + 1));
 		i += 1;
 	}
 	return (i);

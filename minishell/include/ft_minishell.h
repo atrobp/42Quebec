@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:23:53 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/05 10:24:07 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/05 11:49:25 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ typedef struct s_arg
 }		t_arg;
 
 /*         src -- minishell         */
-//ft_array_creation and addition
+//ft_array creation, addition, edition and print
 char	**ft_create_env_table(char **env, char *todo, char *command);
 t_env	ft_create_env(char **env);
 t_env	ft_delete_arg(t_env *args, char *removeme);
+t_env	ft_print_env(t_env *args, char *cmd);
+t_env	ft_add_env(t_env *args, char *cmd);
 
 //ft_functions
 void	ft_strcpy(char *src, char *dst, char stopat);
@@ -57,7 +59,6 @@ void	ft_writeprompt(t_env *args);
 
 //ft_custom_op
 int		ft_operation_caller(t_arg *args, char *command);
-int		ft_print_env(t_arg *args, char *str);
 int		ft_unset_add(t_arg *args, char *str);
 
 #endif

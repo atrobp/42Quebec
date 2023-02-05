@@ -3,7 +3,7 @@
 /* Copyright (C) 1987, 1989, 1992-2021 Free Software Foundation, Inc.
 
    This file is part of the GNU Readline Library (Readline), a library
-   for reading lines of text with interactive input and history editing.      
+   for reading lines of text with interactive input and history editing.
 
    Readline is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -31,9 +31,9 @@ extern "C" {
 #  include "chardefs.h"
 #  include "rltypedefs.h"
 #else
-#  include <readline/rlstdc.h>
-#  include <readline/chardefs.h>
-#  include <readline/rltypedefs.h>
+#  include "rlstdc.h"
+#  include "chardefs.h"
+#  include "rltypedefs.h"
 #endif
 
 /* A keymap contains one entry for each key in the ASCII set.

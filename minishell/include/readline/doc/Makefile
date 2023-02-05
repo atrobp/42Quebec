@@ -49,7 +49,7 @@ RM = rm -f
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 
-BUILD_DIR = /home/atrobp/42/cerlce_3/minishell/new/include/readline
+BUILD_DIR = /Users/atopalli/Desktop/42Quebec/minishell/include/readline
 TEXINPUTDIR = $(srcdir)
 
 MAKEINFO    = LANGUAGE= makeinfo

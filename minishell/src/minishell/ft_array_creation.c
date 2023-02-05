@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:23:41 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/05 10:09:15 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/05 11:50:13 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ t_env	ft_create_env(char **env)
 	i = 0;
 	while (env[i] != 0)
 		i += 1;
-	p.arg = malloc(sizeof(char **) * i + 1);
-	p.arg_value = malloc(sizeof(char **) * i + 1);
+	p.arg = malloc(sizeof(char **) * i + 2);
+	p.arg_value = malloc(sizeof(char **) * i + 2);
 	if (p.arg)
 	{
 		i = -1;
