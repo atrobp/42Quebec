@@ -1,9 +1,15 @@
 # Cercle2
 
-> *minishell*
+`minishell`
 
-`minishell` this project is team of two and we have recreate and behave practically the same as bash (unix shell) :writing_hand:
+:us: The goal of this project is to create a simple shell.
 
-> *philosopher*
+:fr: L'objectif de ce projet est de créer un simple shell.
 
-`philosopher` project is about handling threads, time execution, thread synchronization and mutex :writing_hand:
+- - -
+
+`philosopher`
+
+:us: Project is about handling threads, time execution, thread synchronization and mutex.
+
+:fr: Ce projet concerne la gestion des threads, l'exécution du temps, la synchronisation des threads et le mutex.
