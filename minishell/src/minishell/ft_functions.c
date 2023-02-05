@@ -6,13 +6,13 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:30 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/04 10:46:55 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/04 19:20:03 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_minishell.h"
 
-void	ft_strcpy(char *src, char *dst)
+void	ft_strcpy(char *src, char *dst, char stopat)
 {
 	int	i;
 
@@ -21,46 +21,38 @@ void	ft_strcpy(char *src, char *dst)
 	{
 		dst[i] = src[i];
 		i += 1;
+		if (src[i] == stopat)
+			break ;
 	}
 	dst[i] = 0;
 }
 
-int	ft_strlen(char *str)
+int	ft_strlen(char *str, char stopat)
 {
 	int	len;
 
 	len = 0;
 	while (str[len])
 	{
+		if (str[len] == stopat)
+			break ;
 		len += 1;
 	}
 	return (len);
 }
 
-void	*ft_trimme(char *str)
+int	ft_getenv(char *name, char **env_name)
 {
 	int	i;
-	int	j;
-	int	copy;
 
-	j = 0;
 	i = 0;
-	while (str[i] <= ' ')
-		i += 1;
-	j = ft_strlen(str);
-	while (str[--j] <= ' ')
-		;
-	if (i != 0 || j != ft_strlen(str) - 1)
+	while (env_name[i])
 	{
-		copy = -1;
-		while (i <= j)
-		{
-			str[++copy] = str[i];
-			i += 1;
-		}
-		str[++copy] = 0;
+		if (ft_strcmp(name, env_name[i]) == 0)
+			return (0);
+		i += 1;
 	}
-	return (str);
+	return (1);
 }
 
 char	*ft_strdup(char *str, char *command)
@@ -69,7 +61,7 @@ char	*ft_strdup(char *str, char *command)
 	char	*dup;
 
 	i = 0;
-	dup = malloc(sizeof(str) * ft_strlen(str) + 1);
+	dup = malloc(sizeof(str) * ft_strlen(str, 0) + 1);
 	if (str[0] > ' ')
 	{
 		while (str[i])

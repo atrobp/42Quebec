@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:57:29 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/04 15:05:50 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/04 19:04:02 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_add_env(t_arg *args, char *str)
 {
 	int		len;
 
-	len = ft_strlen(str);
+	len = ft_strlen(str, 0);
 	while (str[--len] > ' ')
 		;
 	args->env_args = ft_create_env_table(args->env_args, "add", str + len + 1);
@@ -33,7 +33,7 @@ int	ft_print_env(t_arg *args, char *str)
 	{
 		if (ft_strcmp("export", str) == 0)
 			write(1, "export -x ", 10);
-		write(1, args->env_args[i], ft_strlen(args->env_args[i]));
+		write(1, args->env_args[i], ft_strlen(args->env_args[i], 0));
 		write(1, "\n", 1);
 		i += 1;
 	}
@@ -46,7 +46,7 @@ int	ft_operation_caller(t_arg *args, char *command)
 	int		(*ptr_func[5])(t_arg *, char *);
 	int		len;
 
-	len = ft_strlen(command);
+	len = ft_strlen(command, 0);
 	while (command[--len] > ' ')
 		;
 	i = 0;

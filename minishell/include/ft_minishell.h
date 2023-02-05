@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:23:53 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/04 15:05:35 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/04 20:08:24 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@
 # define KGRN "\x1B[32m"
 # define KNRM "\x1B[0m"
 
+typedef struct s_env
+{
+	char	**arg;
+	char	**arg_value;
+	char	*user;
+}	t_env;
+
 typedef struct s_arg
 {
 	char	*cmd_check[5];
@@ -34,11 +41,12 @@ typedef struct s_arg
 /*         src -- minishell         */
 //ft_array_creation and addition
 char	**ft_create_env_table(char **env, char *todo, char *command);
+t_env	ft_create_env(char **env);
 
 //ft_functions
-void	ft_strcpy(char *src, char *dst);
-int		ft_strlen(char *str);
-void	*ft_trimme(char *str);
+void	ft_strcpy(char *src, char *dst, char stopat);
+int		ft_strlen(char *str, char stopat);
+int		ft_getenv(char *name, char **env_name);
 char	*ft_strdup(char *str, char *command);
 int		ft_strcmp(char *s1, char *s2);
 
