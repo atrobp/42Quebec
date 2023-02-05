@@ -6,12 +6,15 @@
 
 :fr: Ce projet est de recoder printf. Ce projet porte principalement sur les arguments à taille variable, va_list et les types de variables.
 
+- - -
+
 `get_next_line`
 
 :us: This project consists of reading a file one line at a time from a given buffer, here we learn about static variables, but also how to manage them.
 
 :fr: Ce projet consiste à lire un fichier une ligne à la fois à partir d'un buffer donné, ici nous apprenons les variables statiques, mais aussi comment les gérer.
 
+- - -
 
 `born2beroot`
 
