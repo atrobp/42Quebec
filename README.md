@@ -1,4 +1,7 @@
 # Cercle0
 > *libft*
 
-`libft` first project, this is recreating and behaving the same as basic and complex functions
+eng: This first project aims to recode a number of functions from the standard C library, as well as other utility functions.
+
+fr: Ce premier projet a pour but de recoder un certain nombre de fonctions de la librairie C standard, ainsi que d'autres fonctions utilitaires
+
