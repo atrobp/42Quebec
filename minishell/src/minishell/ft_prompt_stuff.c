@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:49:11 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/04 21:27:34 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/05 10:25:27 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ void	*ft_trimstr(char *str)
 	}
 	str[copy] = 0;
 	return (str);
+}
+
+t_env	ft_sendcommand(t_env *args, char *cmd)
+{
+	args->special_cmds[0] = ft_strdup("unset", cmd + ft_strlen(cmd, ' ') + 1);
+	if (ft_strcmp(cmd, args->special_cmds[0] == 0))
+	{
+		if (ft_getenv(cmd + ft_strlen(cmd, ' ') + 1, args) != NULL)
+			*args = ft_delete_arg(args, cmd + ft_strlen(cmd, ' ') + 1);
+	}
+	else
+		system(cmd);
+	return (*args);
 }
 
 void	ft_writeprompt(t_env *args)

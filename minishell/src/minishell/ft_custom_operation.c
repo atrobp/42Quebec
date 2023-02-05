@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:57:29 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/04 19:04:02 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/05 10:23:49 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,26 @@ int	ft_add_env(t_arg *args, char *str)
 	return (0);
 }
 
+t_env	ft_delete_arg(t_env *args, char *removeme)
+{
+	int	i;
+
+	i = 0;
+	while (args->arg[i])
+	{
+		if (ft_strcmp(remove, args->arg[i]) == 0)
+		{
+			while (args->arg[i])
+			{
+				args->arg[i] = args->arg[i + 1];
+				args->arg_value[i] = args->arg_value[i + 1];
+				i += 1;
+			}
+		}
+		i += 1;
+	}
+	return (*args);
+}
 
 int	ft_print_env(t_arg *args, char *str)
 {
