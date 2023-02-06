@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:57:29 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/05 16:36:55 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:45:51 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,18 @@
 t_env	ft_add_env(t_env *args, char *str)
 {
 	char	*temp;
+	// t_env	new;
+	int		i;
 
-	temp = malloc(sizeof(char*) * ft_strlen(str, '=') + 1);
+	temp = malloc(sizeof(char *) * ft_strlen(str, '=') + 1);
 	ft_strcpy(str, temp, '=');
 	if (ft_getenv(temp, args) == NULL)
 	{
-
+		i = 0;
+		while (args->arg[i])
+			i += 1;
+		// new.arg = malloc(sizeof(char) * i + 2);
+		// new.arg_value = malloc(sizeof(char) * i + 2);
 	}
 	return (*args);
 }
@@ -65,16 +71,12 @@ t_env	ft_print_env(t_env *args, char *cmd)
 int	ft_operation_caller(t_arg *args, char *command)
 {
 	int		i;
-	// int		(*ptr_func[5])(t_arg *, char *);
 	int		len;
 
 	len = ft_strlen(command, 0);
 	while (command[--len] > ' ')
 		;
 	i = 0;
-	// ptr_func[1] = ft_print_env;
-	// ptr_func[2] = ft_print_env;
-	// ptr_func[4] = ft_add_env;
 	args->cmd_check[0] = "unset";
 	args->cmd_check[1] = "export";
 	args->cmd_check[2] = "env";
@@ -82,8 +84,6 @@ int	ft_operation_caller(t_arg *args, char *command)
 	args->cmd_check[4] = ft_strdup("export ", command + len + 1);
 	while (i < 5)
 	{
-		if (ft_strcmp(args->cmd_check[i], command) == 0)
-			// return (ptr_func[i](args, command + len + 1));
 		i += 1;
 	}
 	return (i);

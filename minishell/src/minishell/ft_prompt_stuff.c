@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:49:11 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/05 16:29:21 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:50:48 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,14 @@ void	*ft_trimstr(char *str)
 
 t_env	ft_sendcommand(t_env *args, char *cmd)
 {
-	int		i;
-	t_env	(*cmd_func[4])(t_env *, char *);
+	int				i;
+	static t_env	(*cmd_func[4])(t_env *, char *)
+		= {ft_delete_arg, ft_print_env, ft_add_env, ft_print_env};
+
 	args->special_cmds[0] = ft_strdup("unset ", cmd + ft_strlen(cmd, ' ') + 1);
 	args->special_cmds[1] = "export";
 	args->special_cmds[2] = ft_strdup("export ", cmd + ft_strlen(cmd, ' ') + 1);
 	args->special_cmds[3] = "env";
-	cmd_func[0] = ft_delete_arg;
-	cmd_func[1] = ft_print_env;
-	cmd_func[2] = ft_add_env;
-	cmd_func[3] = ft_print_env;
 	i = 0;
 	while (i < 4)
 	{
@@ -71,6 +69,8 @@ void	ft_writeprompt(t_env *args)
 		write(1, KNRM, ft_strlen(KNRM, 0));
 		command = ft_trimstr(readline("@minishelt> "));
 		add_history(command);
-		*args = ft_sendcommand(args, command);
+		if (ft_strcmp("exit", command) == 0)
+			exit(0);
+		free(command);
 	}
 }

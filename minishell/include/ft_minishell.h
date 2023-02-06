@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:23:53 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/05 16:33:06 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/05 22:09:00 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,9 @@ void	ft_writeprompt(t_env *args);
 //ft_custom_op
 int		ft_operation_caller(t_arg *args, char *command);
 int		ft_unset_add(t_arg *args, char *str);
+
+//ft_allocation
+void	*ft_realloc(void *ptr, size_t size);
+void	*ft_calloc(size_t nitems, size_t size);
 
 #endif

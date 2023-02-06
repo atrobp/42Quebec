@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_de_allocations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 17:03:22 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/05 21:52:49 by atopalli         ###   ########.fr       */
+/*   Created: 2023/02/05 20:24:32 by atopalli          #+#    #+#             */
+/*   Updated: 2023/02/05 21:44:30 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_minishell.h"
 
-int	main(int ac, char *av[], char *env[])
+void	*ft_calloc(size_t nitems, size_t size)
 {
-	t_env	args;
+	char	*ptr;
+	size_t	i;
 
-	(void)ac;
-	(void)av;
-	(void)env;
-	// args = ft_create_env(env);
-	// args.user = ft_getenv("USER", &args);
-	args.user = getenv("USER");
-	printf("%s", args.user);
-	// ft_writeprompt(&args);
-	return (0);
+	i = 0;
+	ptr = malloc(sizeof(size) * nitems + 1);
+	if (ptr)
+	{
+		while (i <= nitems)
+		{
+			ptr[i] = 0;
+			i += 1;
+		}
+		return (ptr);
+	}
+	return (NULL);
+}
+
+void	*ft_realloc(void *ptr, size_t size)
+{
+	free(ptr);
+	return (ft_calloc(size, sizeof(ptr)));
 }
