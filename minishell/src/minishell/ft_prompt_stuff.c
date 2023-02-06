@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:49:11 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/05 21:50:48 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:23:58 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,26 @@ t_env	ft_sendcommand(t_env *args, char *cmd)
 	return (*args);
 }
 
-void	ft_writeprompt(t_env *args)
+void	ft_exit(t_list *args)
 {
-	char	*command;
+	// if (args->env_vars)
+	// 	free(args->env_vars);
+	// free(args->user);
+	free(args->command);
+	exit(0);
+}
 
+void	ft_writeprompt(t_list *args)
+{
 	while (1)
 	{
 		write(1, KGRN, ft_strlen(KGRN, 0));
 		write(1, args->user, ft_strlen(args->user, 0));
 		write(1, KNRM, ft_strlen(KNRM, 0));
-		command = ft_trimstr(readline("@minishelt> "));
-		add_history(command);
-		if (ft_strcmp("exit", command) == 0)
-			exit(0);
-		free(command);
+		args->command = ft_trimstr(readline("@minishelt> "));
+		add_history(args->command);
+		if (ft_strcmp("exit", args->command))
+			ft_exit(args);
+		free(args->command);
 	}
 }

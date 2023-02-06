@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:30 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/04 21:31:14 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/06 12:26:45 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,7 @@ int	ft_strcmp(char *s1, char *s2)
 			break ;
 		i += 1;
 	}
-	return (s2[i] - s1[i]);
+	if (s2[i] == s1[i])
+		return (true);
+	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:23:53 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/05 22:09:00 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:05:21 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,20 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <stdbool.h>
 # include "readline/history.h"
 # include "readline/readline.h"
 
 # define KGRN "\x1B[32m"
 # define KNRM "\x1B[0m"
+
+typedef struct s_list
+{
+	char	**env_vars;
+	char	**local_vars;
+	char	*user;
+	char	*command;
+}		t_list;
 
 typedef struct s_env
 {
@@ -55,14 +64,15 @@ char	*ft_strdup(char *str, char *command);
 int		ft_strcmp(char *s1, char *s2);
 
 //ft_prompt_stuff
-void	ft_writeprompt(t_env *args);
+void	ft_writeprompt(t_list *args);
 
 //ft_custom_op
 int		ft_operation_caller(t_arg *args, char *command);
 int		ft_unset_add(t_arg *args, char *str);
 
 //ft_allocation
-void	*ft_realloc(void *ptr, size_t size);
 void	*ft_calloc(size_t nitems, size_t size);
+void	*ft_realloc(void *ptr, size_t size);
+void	*ft_memcopy(void *s1, void *s2, size_t n);
 
 #endif
