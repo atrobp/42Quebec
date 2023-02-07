@@ -6,7 +6,7 @@
 #    By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 17:07:30 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/07 00:49:07 by atopalli         ###   ########.fr        #
+#    Updated: 2023/02/07 01:00:04 by atopalli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,16 +19,16 @@ MSFILES		= 	$(MSFOLDER)ft_allocations_funcs.c	$(MSFOLDER)ft_env_funcs.c	\
 OFILES		= 	$(MSFILES:.c=.o)
 RL_LIB		= 	./include/readline/libreadline.a	./include/readline/libhistory.a -lreadline -lcurses
 
-$(NAME): $(OFILES)
-	$(CC) $(FLAGS) $(MSFILES) -o $(NAME) $(RL_LIB)
+$(NAME): 		$(OFILES)
+	$(CC) 		$(FLAGS) $(MSFILES) -o $(NAME) $(RL_LIB)
 
-all: $(NAME)
+all: 			$(NAME)
 
 norm:
 	norminette $(MSFILES) ./include/ft_minishell.h
 
 clean:
-	$(RM) $(OFILES)
+	$(RM) 		$(OFILES)
 
-fclean: clean
-	$(RM) $(NAME)
+fclean: 		clean
+	$(RM) 		$(NAME)
