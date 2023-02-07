@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:03:22 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 11:13:25 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:27:47 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_list	ft_check_cmd(t_list *p)
 	return (*p);
 }
 
-int	main(int ac, char *av[], char **env)
+int	main(int ac, char **av, char **env)
 {
 	t_list	list;
 

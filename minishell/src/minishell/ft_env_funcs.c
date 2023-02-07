@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:56:52 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 11:05:31 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:13:27 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,31 @@ t_list	ft_env_delete(t_list *s)
 
 t_list	ft_env_print(t_list *s)
 {
+	char	**temp;
+	size_t	i;
+	size_t	j;
 
+	i = 0;
+	temp = ft_calloc(s->len, sizeof(temp));
+	while (s->env_vars[i])
+	{
+		j = i + 1;
+		while (s->env_vars[j])
+		{
+			if (s->env_vars[j][0] <= s->env_vars[i][0])
+			{
+				temp[i] = ft_memdup(s->env_vars[j], EMPTY, END);
+			}
+			j += 1;
+		}
+		printf("%s\n", temp[i]);
+		i += 1;
+	}
+	i = 0;
+	// while (temp[i])
+	// {
+	// 	printf("declare -x %s\n", temp[i]);
+	// 	i += 1;
+	// }
 	return (*s);
 }
