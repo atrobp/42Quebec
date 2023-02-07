@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:30 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/06 22:21:24 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 09:13:39 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@ int	ft_memcmp(void *s1, void *s2)
 	while (((unsigned char *)s1)[i] && ((unsigned char *)s2)[i])
 	{
 		if (((unsigned char *)s2)[i] != ((unsigned char *)s1)[i])
+		{
 			return (0);
+		}
 		i += 1;
 	}
 	return (1);

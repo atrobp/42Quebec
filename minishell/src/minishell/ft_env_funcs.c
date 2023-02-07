@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:56:52 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 00:58:10 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 09:16:15 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_list	ft_env_import(char **env)
 		list.env_vars[i] = ft_memdup(env[i], END);
 		i += 1;
 	}
-	list.user = getenv("USER");
 	return (list);
 }
 
@@ -52,15 +51,17 @@ char	*ft_getenv(char *name, char **env)
 
 t_list	ft_env_edit_add(t_list *s)
 {
-	;
+	return (*s);
 }
 
 t_list	ft_env_delete(t_list *s)
 {
 	;
+	return (*s);
 }
 
 t_list	ft_env_print(t_list *s)
 {
 	;
+	return (*s);
 }
