@@ -1,35 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_condensed.c                                     :+:      :+:    :+:   */
+/*   ft_env_funcs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 21:33:33 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/04 21:43:07 by atopalli         ###   ########.fr       */
+/*   Created: 2023/02/06 20:56:52 by atopalli          #+#    #+#             */
+/*   Updated: 2023/02/06 22:11:36 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_minishell.h"
 
-int	ft_str_len_cpy_diff(char *s1, char *s2, char todo)
+t_list	ft_env_import(char **env)
 {
-	int	i;
+	t_list	list;
+	size_t	i;
 
 	i = 0;
-	while (todo == 'd')
+	while (env[i])
+		i += 1;
+	list.len = i;
+	list.env_vars = ft_calloc(i, sizeof(env));
+	i = 0;
+	while (env[i])
 	{
-		if (!(s2[i] || s1[i]) || s2[i] != s1[i])
-			return (s2[i] - s1[i]);
+		list.env_vars[i] = ft_memdup(env[i], END);
 		i += 1;
 	}
-	while (s2[i])
-	{
-		if (todo == 'c')
-			s1[i] = s2[i];
-		i += 1;
-	}
-	if (todo == 'c')
-		s1[i] = 0;
-	return (i);
+	list.user = getenv("USER");
+	return (list);
 }
+
+// t_list	ft_env(t_list *list, char *s1)
+// {
+// 	;
+// }
+
+// t_list	ft_env(t_list *list, char *s1)
+// {
+// 	;
+// }
+
+// t_list	ft_env(t_list *list, char *s1)
+// {
+// 	;
+// }
