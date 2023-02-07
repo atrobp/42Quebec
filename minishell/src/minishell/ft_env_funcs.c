@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:56:52 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 09:16:15 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:05:31 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_list	ft_env_import(char **env)
 	i = 0;
 	while (env[i])
 	{
-		list.env_vars[i] = ft_memdup(env[i], END);
+		list.env_vars[i] = ft_memdup(env[i], EMPTY, END);
 		i += 1;
 	}
 	return (list);
@@ -39,7 +39,7 @@ char	*ft_getenv(char *name, char **env)
 	i = 0;
 	while (env[i])
 	{
-		s1 = ft_memdup(env[i], '=');
+		s1 = ft_memdup(env[i], EMPTY, '=');
 		if (ft_memcmp(s1, name))
 		{
 			return (env[i] + ft_memlen(env[i], '='));
@@ -62,6 +62,6 @@ t_list	ft_env_delete(t_list *s)
 
 t_list	ft_env_print(t_list *s)
 {
-	;
+
 	return (*s);
 }

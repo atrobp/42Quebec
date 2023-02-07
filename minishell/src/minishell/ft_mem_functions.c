@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:30 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 09:13:39 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:55:56 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,17 @@ size_t	ft_memlen(void *s1, unsigned char stopat)
 	return (i);
 }
 
-void	*ft_memdup(void *ptr, char stopat)
+void	*ft_memdup(void *ptr, void *ptr2, char stopat)
 {
 	void	*copy;
 
 	copy = ft_calloc(ft_memlen(ptr, stopat), sizeof(ptr));
 	ft_memcopy(copy, ptr, ft_memlen(ptr, stopat), stopat);
+	if (((unsigned char *)ptr2)[0])
+	{
+		copy = ft_realloc(copy, ft_memlen(ptr, END) + ft_memlen(ptr2, END));
+		ft_memcopy(copy + ft_memlen(copy, END), ptr2, ft_memlen(ptr2, END), END);
+	}
 	return (copy);
 }
 

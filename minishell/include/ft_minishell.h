@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 21:41:32 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 08:44:20 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:39:12 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "readline/readline.h"
 
 # define END 0
+# define EMPTY ""
 # define KGRN "\x1B[32m"
 # define KNRM "\x1B[0m"
 
@@ -30,14 +31,14 @@ typedef struct s_list
 	char	**env_vars;
 	char	**local_vars;
 	char	*command;
-	char	*specialcmd[2];
+	char	*specialcmd[3];
 	size_t	len;
 }		t_list;
 
 /*			ft_mem_funcs			*/
 void	*ft_memcopy(void *s1, void *s2, size_t n, unsigned char stopat);
 size_t	ft_memlen(void *s1, unsigned char stopat);
-void	*ft_memdup(void *ptr, char stopat);
+void	*ft_memdup(void *ptr, void *ptr2, char stopat);
 int		ft_memcmp(void *s1, void *s2);
 
 /*			ft_env_funcs			*/
