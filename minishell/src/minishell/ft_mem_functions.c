@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:30 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 10:55:56 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 18:33:45 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ size_t	ft_memlen(void *s1, unsigned char stopat)
 	while (((unsigned char *)s1)[i])
 	{
 		if (((unsigned char *)s1)[i] == stopat)
+		{
+			i += 1;
 			break ;
+		}
 		i += 1;
 	}
 	return (i);
@@ -60,7 +63,7 @@ int	ft_memcmp(void *s1, void *s2)
 	int	i;
 
 	i = 0;
-	while (((unsigned char *)s1)[i] && ((unsigned char *)s2)[i])
+	while (((unsigned char *)s1)[i] || ((unsigned char *)s2)[i])
 	{
 		if (((unsigned char *)s2)[i] != ((unsigned char *)s1)[i])
 		{

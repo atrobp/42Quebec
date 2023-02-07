@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 21:41:32 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 10:39:12 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 16:36:51 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_list
 	char	**env_vars;
 	char	**local_vars;
 	char	*command;
-	char	*specialcmd[3];
+	char	*specialcmd[4];
 	size_t	len;
 }		t_list;
 

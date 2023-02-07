@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:03:22 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 13:27:47 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 18:43:49 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ t_list	ft_check_cmd(t_list *p)
 
 	i = -1;
 	p->specialcmd[0] = ft_memdup("export", EMPTY, END);
-	p->specialcmd[1] = ft_memdup("export ", p->command, END);
+	p->specialcmd[1] = ft_memdup("export ", p->command + ft_memlen(p->command, ' '), '=');
 	p->specialcmd[2] = ft_memdup("env", EMPTY, END);
-	p->specialcmd[1] = ft_memdup("unset ", p->command, END);
-	while (++i < 3)
+	p->specialcmd[3] = ft_memdup("unset ", p->command, END);
+	while (++i < 4)
 	{
 		if (ft_memcmp(p->command, p->specialcmd[i]))
 		{
@@ -56,7 +56,7 @@ t_list	ft_check_cmd(t_list *p)
 			break ;
 		}
 	}
-	if (i == 3)
+	if (i == 4)
 		system(p->command);
 	free(p->command);
 	return (*p);
@@ -80,7 +80,6 @@ int	main(int ac, char **av, char **env)
 	}
 	for (size_t i = 0; list.env_vars[i]; i++)
 	{
-		printf("%s\n", list.env_vars[i]);
 		free(list.env_vars[i]);
 	}
 	free(list.env_vars);

@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:56:52 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 15:13:27 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 18:45:22 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ char	*ft_getenv(char *name, char **env)
 
 t_list	ft_env_edit_add(t_list *s)
 {
+	ft_realloc(s->env_vars, s->len++);
+	s->env_vars[s->len] = ft_memdup(s->command + ft_memlen(s->command, ' '), EMPTY, END);
+	printf(">>>%s\n", s->env_vars[s->len]);
 	return (*s);
 }
 
@@ -68,25 +71,24 @@ t_list	ft_env_print(t_list *s)
 
 	i = 0;
 	temp = ft_calloc(s->len, sizeof(temp));
-	while (s->env_vars[i])
+	while (i < s->len)
 	{
-		j = i + 1;
-		while (s->env_vars[j])
+		if (ft_memcmp("export", s->command))
 		{
-			if (s->env_vars[j][0] <= s->env_vars[i][0])
+			j = 0;
+			while (j < s->len - i)
 			{
-				temp[i] = ft_memdup(s->env_vars[j], EMPTY, END);
+				if (s->env_vars[j][0] < s->env_vars[i][0])
+				{
+					temp[i] = ft_memdup(s->env_vars[j], EMPTY, END);
+				}
+				j += 1;
 			}
-			j += 1;
+			printf("declare -x %s\n", temp[i]);
 		}
-		printf("%s\n", temp[i]);
+		else
+			printf("%s\n", s->env_vars[i]);
 		i += 1;
 	}
-	i = 0;
-	// while (temp[i])
-	// {
-	// 	printf("declare -x %s\n", temp[i]);
-	// 	i += 1;
-	// }
 	return (*s);
 }
