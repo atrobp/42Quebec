@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:56:52 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 18:45:22 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 21:58:14 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ t_list	ft_env_import(char **env)
 	while (env[i])
 		i += 1;
 	list.len = i;
-	list.env_vars = ft_calloc(i, sizeof(env));
+	list.env_vars = ft_calloc(list.len, sizeof(list.len));
 	i = 0;
 	while (env[i])
 	{
-		list.env_vars[i] = ft_memdup(env[i], EMPTY, END);
+		list.env_vars[i] = env[i];
 		i += 1;
 	}
 	return (list);
@@ -49,46 +49,43 @@ char	*ft_getenv(char *name, char **env)
 	return (NULL);
 }
 
-t_list	ft_env_edit_add(t_list *s)
+void	ft_env_edit_add(t_list *s)
 {
-	ft_realloc(s->env_vars, s->len++);
-	s->env_vars[s->len] = ft_memdup(s->command + ft_memlen(s->command, ' '), EMPTY, END);
-	printf(">>>%s\n", s->env_vars[s->len]);
-	return (*s);
+	ft_realloc(s->env_vars, s->len + 1);
+	s->env_vars[s->len] = ft_memdup(s->command, EMPTY, END);
+	printf(">>>%s\n", s->env_vars[s->len - 1]);
+	s->len += 1;
 }
 
-t_list	ft_env_delete(t_list *s)
+void	ft_env_delete(t_list *s)
 {
-	;
-	return (*s);
+	if (s)
+	{
+		printf("UNSEETTTING");
+	}
 }
 
-t_list	ft_env_print(t_list *s)
+void	ft_env_print(t_list *s)
 {
 	char	**temp;
 	size_t	i;
 	size_t	j;
 
-	i = 0;
+	i = -1;
 	temp = ft_calloc(s->len, sizeof(temp));
-	while (i < s->len)
+	while (s->env_vars[++i])
 	{
 		if (ft_memcmp("export", s->command))
 		{
-			j = 0;
-			while (j < s->len - i)
+			j = -1;
+			while (++j < s->len - i)
 			{
 				if (s->env_vars[j][0] < s->env_vars[i][0])
-				{
 					temp[i] = ft_memdup(s->env_vars[j], EMPTY, END);
-				}
-				j += 1;
 			}
 			printf("declare -x %s\n", temp[i]);
 		}
 		else
 			printf("%s\n", s->env_vars[i]);
-		i += 1;
 	}
-	return (*s);
 }

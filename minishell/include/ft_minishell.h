@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 21:41:32 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 16:36:51 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 21:42:10 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ void	*ft_memcopy(void *s1, void *s2, size_t n, unsigned char stopat);
 size_t	ft_memlen(void *s1, unsigned char stopat);
 void	*ft_memdup(void *ptr, void *ptr2, char stopat);
 int		ft_memcmp(void *s1, void *s2);
+bool	ft_memchr(void *ptr, unsigned char needle);
 
 /*			ft_env_funcs			*/
 t_list	ft_env_import(char **env);
-t_list	ft_env_edit_add(t_list *s);
-t_list	ft_env_delete(t_list *s);
-t_list	ft_env_print(t_list *s);
+void	ft_env_edit_add(t_list *s);
+void	ft_env_delete(t_list *s);
+void	ft_env_print(t_list *s);
 char	*ft_getenv(char *name, char **env);
 
 /*			ft_allocation_funcs		*/

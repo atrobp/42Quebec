@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:31:30 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 18:33:45 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/07 21:41:56 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	*ft_memdup(void *ptr, void *ptr2, char stopat)
 	if (((unsigned char *)ptr2)[0])
 	{
 		copy = ft_realloc(copy, ft_memlen(ptr, END) + ft_memlen(ptr2, END));
-		ft_memcopy(copy + ft_memlen(copy, END), ptr2, ft_memlen(ptr2, END), END);
+		ft_memcopy(copy + ft_memlen(copy, END), ptr2, ft_memlen(ptr2, END),
+			END);
 	}
 	return (copy);
 }
@@ -72,4 +73,20 @@ int	ft_memcmp(void *s1, void *s2)
 		i += 1;
 	}
 	return (1);
+}
+
+bool	ft_memchr(void *ptr, unsigned char needle)
+{
+	size_t	i;
+
+	i = 0;
+	while (((unsigned char *)ptr)[i])
+	{
+		if (((unsigned char *)ptr)[i] == needle)
+		{
+			return (true);
+		}
+		i += 1;
+	}
+	return (false);
 }
