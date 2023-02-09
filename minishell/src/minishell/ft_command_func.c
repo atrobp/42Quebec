@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:14:02 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/09 12:43:20 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/09 19:30:06 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,14 @@ void	ft_check_cmd(t_list *p)
 void	ft_setspecial_cmd(t_list *p)
 {
 	p->spec_cmd[0] = ft_memdup("export", EMPTY, END);
-	p->spec_cmd[1] = ft_memdup("empty", EMPTY, END);
-	p->spec_cmd[2] = ft_memdup("empty", EMPTY, END);
-	if (p->cmd[0] && ft_memchr(p->cmd, ' '))
+	p->spec_cmd[1] = ft_memdup("export ", EMPTY, END);
+	p->spec_cmd[2] = ft_memdup("unset ", EMPTY, END);
+	p->spec_cmd[3] = NULL;
+	if (ft_memchr(p->cmd, ' '))
 	{
-		// free(p->spec_cmd[1]);
-		// free(p->spec_cmd[2]);
-		// p->spec_cmd[1] = (char*)ft_memdup("export ", p->cmd, END);
-		// p->spec_cmd[2] = (char*)ft_memdup("unset ", p->cmd, END);
+		free(p->spec_cmd[1]);
+		free(p->spec_cmd[2]);
+		p->spec_cmd[1] = ft_memdup("export ", p->cmd + 7, END);
+		p->spec_cmd[2] = ft_memdup("unset ", p->cmd + 6, END);
 	}
 }
