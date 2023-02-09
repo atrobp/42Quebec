@@ -29,7 +29,9 @@
 				"editor.minimap.enabled": false,
 				"workbench.colorTheme": "GitHub Dark Dimmed",
 				"terminal.integrated.defaultProfile.linux": "zsh",
-				"files.autoSave": "onFocusChange"
+				"files.autoSave": "onFocusChange",
+				"GitHub.copilot": true,
+				"editor.inlineSuggest.enabled": true
 			},
 			"extensions": [
 				"ms-vscode.cpptools",
