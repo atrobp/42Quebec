@@ -28,7 +28,8 @@
 				//general settings
 				"editor.minimap.enabled": false,
 				"workbench.colorTheme": "GitHub Dark Dimmed",
-				"terminal.integrated.defaultProfile.linux": "zsh"
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				"files.autoSave": "onFocusChange"
 			},
 			"extensions": [
 				"ms-vscode.cpptools",
