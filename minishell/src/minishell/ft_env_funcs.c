@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:56:52 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 21:58:14 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:15:06 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_list	ft_env_import(char **env)
 	i = 0;
 	while (env[i])
 	{
-		list.env_vars[i] = env[i];
+		list.env_vars[i] = ft_memdup(env[i], EMPTY, END);
 		i += 1;
 	}
 	return (list);
@@ -51,10 +51,22 @@ char	*ft_getenv(char *name, char **env)
 
 void	ft_env_edit_add(t_list *s)
 {
-	ft_realloc(s->env_vars, s->len + 1);
-	s->env_vars[s->len] = ft_memdup(s->command, EMPTY, END);
-	printf(">>>%s\n", s->env_vars[s->len - 1]);
-	s->len += 1;
+	char	**temp;
+	size_t	i;
+
+	temp = ft_calloc(s->len + 1, sizeof(temp));
+	if (!temp)
+		return ;
+	i = 0;
+	while (s->env_vars[i])
+	{
+		temp[i] = ft_memdup(s->env_vars[i], EMPTY, END);
+		free(s->env_vars[i]);
+		i += 1;
+	}
+	temp[i] = ft_memdup(s->command, EMPTY, END);
+	free(s->env_vars);
+	s->env_vars = temp;
 }
 
 void	ft_env_delete(t_list *s)
@@ -67,25 +79,16 @@ void	ft_env_delete(t_list *s)
 
 void	ft_env_print(t_list *s)
 {
-	char	**temp;
 	size_t	i;
-	size_t	j;
 
-	i = -1;
-	temp = ft_calloc(s->len, sizeof(temp));
-	while (s->env_vars[++i])
+	i = 0;
+	while (s->env_vars[i])
 	{
 		if (ft_memcmp("export", s->command))
 		{
-			j = -1;
-			while (++j < s->len - i)
-			{
-				if (s->env_vars[j][0] < s->env_vars[i][0])
-					temp[i] = ft_memdup(s->env_vars[j], EMPTY, END);
-			}
-			printf("declare -x %s\n", temp[i]);
+			printf("declare -x ");
 		}
-		else
-			printf("%s\n", s->env_vars[i]);
+		printf("%s\n", s->env_vars[i]);
+		i += 1;
 	}
 }

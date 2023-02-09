@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:03:22 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/07 22:02:49 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/08 21:36:28 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,36 +40,24 @@ void	*ft_trimcmd(char *str)
 void	ft_check_cmd(t_list *p)
 {
 	size_t			i;
-	static void		(*ptr_func[4])(t_list *) = {ft_env_print,
-		ft_env_edit_add, ft_env_print, ft_env_delete};
+	void		(*ptr_func[3])(t_list *) = {ft_env_print, ft_env_edit_add, ft_env_delete};
 
-	i = 0;
 	p->specialcmd[0] = ft_memdup("export", EMPTY, END);
-	p->specialcmd[1] = ft_memdup("export ", EMPTY, END);
-	p->specialcmd[2] = ft_memdup("env", EMPTY, END);
-	p->specialcmd[3] = ft_memdup("unset ", EMPTY, END);
-	if (ft_memchr(p->command, ' '))
+	p->specialcmd[1] = ft_memdup("export ", p->cmd + ft_memlen(p->cmd, ' '), END);
+	p->specialcmd[2] = ft_memdup("unset ", p->cmd + ft_memlen(p->cmd, ' '), END);
+	i = 0;
+	while (i < 4)
 	{
-		p->specialcmd[1] = ft_realloc(p->specialcmd[1],
-				ft_memlen(p->command, END));
-		p->specialcmd[3] = ft_realloc(p->specialcmd[3],
-				ft_memlen(p->command, END));
-		p->specialcmd[1] = ft_memdup("export ", p->command
-				+ ft_memlen(p->command, ' '), END);
-		p->specialcmd[3] = ft_memdup("unset ", p->command
-				+ ft_memlen(p->command, ' '), END);
-	}
-	while (++i < 4)
-	{
-		if (ft_memcmp(p->command, p->specialcmd[i]))
+		if (ft_memcmp(p->cmd, p->specialcmd[i]))
 		{
 			ptr_func[i](p);
 			break ;
 		}
+		i += 1;
 	}
 	if (i == 4)
-		system(p->command);
-	free(p->command);
+		system(p->cmd);
+	free(p->cmd);
 }
 
 int	main(int ac, char **av, char **env)
@@ -82,13 +70,13 @@ int	main(int ac, char **av, char **env)
 	list = ft_env_import(env);
 	while (1)
 	{
-		list.command = ft_trimcmd(readline("minishelt> "));
-		if (!ft_memcmp("exit", list.command))
+		list.cmd = ft_trimcmd(readline("minishelt> "));
+		if (!ft_memcmp("exit", list.cmd))
 			ft_check_cmd(&list);
 		else
 			break ;
 	}
-	free(list.command);
+	free(list.cmd);
 	free(list.env_vars);
 	return (0);
 }
