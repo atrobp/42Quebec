@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 21:41:32 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/09 19:36:57 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/09 20:26:22 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 # include "readline/readline.h"
 
 # define END 0
-# define VAR
-# define VALUE
 # define EMPTY ""
 # define KGRN "\x1B[32m"
 # define KNRM "\x1B[0m"
