@@ -6,11 +6,25 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:56:52 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/08 19:15:06 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:06:09 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_minishell.h"
+
+char	*ft_strdup(char *str)
+{
+	char	*new;
+	int		i;
+
+	new = malloc(sizeof(str) * 1000);
+	if (!new || !str[0])
+		return (NULL);
+	for (i = 0; str[i]; i++)
+		new[i] = str[i];
+	new[i] = 0;
+	return (new);
+}
 
 t_list	ft_env_import(char **env)
 {
@@ -18,15 +32,17 @@ t_list	ft_env_import(char **env)
 	size_t	i;
 
 	i = 0;
-	while (env[i])
-		i += 1;
-	list.len = i;
-	list.env_vars = ft_calloc(list.len, sizeof(list.len));
-	i = 0;
-	while (env[i])
+	list.env_vars = NULL;
+	if (env[0])
 	{
-		list.env_vars[i] = ft_memdup(env[i], EMPTY, END);
-		i += 1;
+		list.env_vars = malloc(sizeof(env) * 5) + 1;
+		while (i < 5)
+		{
+			list.env_vars[i] = ft_memdup("hello", EMPTY, END);
+			printf("%s\n", list.env_vars[i]);
+			i += 1;
+		}
+		list.env_vars[i] = NULL;
 	}
 	return (list);
 }
@@ -58,13 +74,13 @@ void	ft_env_edit_add(t_list *s)
 	if (!temp)
 		return ;
 	i = 0;
-	while (s->env_vars[i])
+	while (i < s->len)
 	{
 		temp[i] = ft_memdup(s->env_vars[i], EMPTY, END);
 		free(s->env_vars[i]);
 		i += 1;
 	}
-	temp[i] = ft_memdup(s->command, EMPTY, END);
+	temp[i] = ft_memdup(s->cmd + ft_memlen(s->cmd, ' '), EMPTY, END);
 	free(s->env_vars);
 	s->env_vars = temp;
 }
@@ -82,9 +98,9 @@ void	ft_env_print(t_list *s)
 	size_t	i;
 
 	i = 0;
-	while (s->env_vars[i])
+	while (i < s->len)
 	{
-		if (ft_memcmp("export", s->command))
+		if (ft_memcmp("export", s->cmd))
 		{
 			printf("declare -x ");
 		}

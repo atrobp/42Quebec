@@ -6,7 +6,7 @@
 #    By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 17:07:30 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/07 21:35:54 by atopalli         ###   ########.fr        #
+#    Updated: 2023/02/09 12:22:58 by atopalli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ MSFOLDER	= 	./src/minishell/
 FLAGS		= 	-Wall -Wextra -Werror
 MSFILES		= 	$(MSFOLDER)ft_allocations_funcs.c	$(MSFOLDER)ft_env_funcs.c	\
 				$(MSFOLDER)ft_mem_functions.c		$(MSFOLDER)ft_main.c		\
+				$(MSFOLDER)ft_command_func.c
 
 OFILES		= 	$(MSFILES:.c=.o)
 RL_LIB		= 	./include/readline/libreadline.a	./include/readline/libhistory.a -lreadline -lcurses

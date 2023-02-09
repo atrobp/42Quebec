@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_allocations.c                                   :+:      :+:    :+:   */
+/*   ft_allocations_funcs.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 20:24:32 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/06 21:36:42 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:35:58 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	*ft_calloc(size_t nitems, size_t size)
 	size_t	i;
 
 	i = 0;
-	ptr = malloc(sizeof(size) * nitems + 1);
+	ptr = malloc(size * nitems);
 	if (!ptr)
 		return (NULL);
-	while (i < nitems)
+	while (i < nitems * size)
 	{
 		((unsigned char *)ptr)[i] = 0;
 		i += 1;

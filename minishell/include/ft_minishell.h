@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 21:41:32 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/08 19:27:43 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/09 12:31:08 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include "readline/readline.h"
 
 # define END 0
+# define VAR
+# define VALUE
 # define EMPTY ""
 # define KGRN "\x1B[32m"
 # define KNRM "\x1B[0m"
@@ -31,7 +33,7 @@ typedef struct s_list
 	char	**env_vars;
 	char	**local_vars;
 	char	*cmd;
-	char	*specialcmd[4];
+	char	*spec_cmd[3];
 	size_t	len;
 }		t_list;
 
@@ -52,5 +54,12 @@ char	*ft_getenv(char *name, char **env);
 /*			ft_allocation_funcs		*/
 void	*ft_calloc(size_t nitems, size_t size);
 void	*ft_realloc(void *ptr, size_t size);
+
+/*			ft_command_funcs		*/
+void	*ft_trimcmd(char *str);
+void	ft_check_cmd(t_list *p);
+void	ft_setspecial_cmd(t_list *p);
+
+void	ft_exit(t_list *list);
 
 #endif
