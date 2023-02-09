@@ -35,7 +35,8 @@
 				"ms-vscode.cpptools",
 				"kube.42header",
 				"MariusvanWijk-JoppeKoers.codam-norminette-3",
-				"ms-vscode.cpptools-extension-pack"
+				"ms-vscode.cpptools-extension-pack",
+				"eamodio.gitlens"
 			]
 		}
 	}
