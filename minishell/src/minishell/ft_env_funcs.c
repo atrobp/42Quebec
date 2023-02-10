@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:56:52 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/09 20:49:17 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/10 12:15:12 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,22 +54,29 @@ char	*ft_getenv(char *name, char **env)
 	return (NULL);
 }
 
-void	ft_env_edit(t_list *s)
+bool	ft_env_edit(t_list *s)
 {
 	size_t	i;
+	char	*var;
 
 	i = 0;
-	printf("edit:\n");
+	var = ft_memdup(s->cmd + 7, EMPTY, '=');
+	if (!ft_getenv(var, s->env_vars))
+	{
+		free(var);
+		return (false);
+	}
 	while (s->env_vars[i])
 	{
-		if (ft_memcmp(s->env_vars[i], s->cmd + 6))
+		if (ft_memcmp(s->env_vars[i] + ft_memlen(s->env_vars[i], '='), ft_getenv(var, s->env_vars)))
 		{
 			free(s->env_vars[i]);
-			s->env_vars[i] = ft_memdup(s->cmd + 6, EMPTY, END);
-			break ;
+			s->env_vars[i] = ft_memdup(s->cmd + 7, EMPTY, END);
+			free(var);
 		}
 		i += 1;
 	}
+	return (true);
 }
 
 void	ft_env_edit_add(t_list *s)
@@ -77,12 +84,8 @@ void	ft_env_edit_add(t_list *s)
 	char	**temp;
 	size_t	i;
 
-	printf("%s\n", ft_getenv(s->cmd + 6, s->env_vars));
-	if (ft_getenv(s->cmd + 7, s->env_vars))
-	{
-		ft_env_edit(s);
+	if (ft_env_edit(s))
 		return ;
-	}
 	temp = malloc(sizeof(temp) * (s->len + 2));
 	if (!temp)
 		return ;
