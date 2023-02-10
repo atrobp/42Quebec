@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:56:52 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/09 19:46:58 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/09 20:49:17 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,19 @@ t_list	ft_env_import(char **env)
 	size_t	i;
 
 	i = 0;
-	if (env[0])
+	while (env[i])
+		i += 1;
+	list.env_vars = malloc(sizeof(char **) * (i + 1));
+	if (!list.env_vars)
+		return (list);
+	i = 0;
+	while (env[i])
 	{
-		while (env[i])
-			i += 1;
-		list.env_vars = malloc(sizeof(char **) * (i + 1));
-		if (!list.env_vars)
-			return (list);
-		i = 0;
-		while (env[i])
-		{
-			list.env_vars[i] = ft_memdup(env[i], EMPTY, END);
-			i += 1;
-		}
-		list.env_vars[i] = NULL;
-		list.len = i;
+		list.env_vars[i] = ft_memdup(env[i], EMPTY, END);
+		i += 1;
 	}
+	list.env_vars[i] = NULL;
+	list.len = i;
 	return (list);
 }
 
@@ -57,16 +54,40 @@ char	*ft_getenv(char *name, char **env)
 	return (NULL);
 }
 
+void	ft_env_edit(t_list *s)
+{
+	size_t	i;
+
+	i = 0;
+	printf("edit:\n");
+	while (s->env_vars[i])
+	{
+		if (ft_memcmp(s->env_vars[i], s->cmd + 6))
+		{
+			free(s->env_vars[i]);
+			s->env_vars[i] = ft_memdup(s->cmd + 6, EMPTY, END);
+			break ;
+		}
+		i += 1;
+	}
+}
+
 void	ft_env_edit_add(t_list *s)
 {
 	char	**temp;
 	size_t	i;
 
+	printf("%s\n", ft_getenv(s->cmd + 6, s->env_vars));
+	if (ft_getenv(s->cmd + 7, s->env_vars))
+	{
+		ft_env_edit(s);
+		return ;
+	}
 	temp = malloc(sizeof(temp) * (s->len + 2));
 	if (!temp)
 		return ;
 	i = 0;
-	while (i < s->len)
+	while (s->env_vars[i])
 	{
 		temp[i] = ft_memdup(s->env_vars[i], EMPTY, END);
 		free(s->env_vars[i]);
