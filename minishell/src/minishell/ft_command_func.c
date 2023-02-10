@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:14:02 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/09 19:30:06 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:29:15 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,11 @@ void	ft_setspecial_cmd(t_list *p)
 		p->spec_cmd[1] = ft_memdup("export ", p->cmd + 7, END);
 		p->spec_cmd[2] = ft_memdup("unset ", p->cmd + 6, END);
 	}
+}
+
+void	ft_trim_input(t_list *p)
+{
+	size_t	i;
+
+	i = 0;
 }
