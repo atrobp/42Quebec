@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:03:22 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/09 16:28:24 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/10 20:13:41 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,22 @@ void	ft_exit(t_list *list)
 	}
 	free(list->cmd);
 	free(list->env_vars);
+}
+
+void	ft_valid_and_send(char **input, char **path)
+{
+	size_t	i;
+
+	i = 0;
+	while (input[i])
+	{
+		printf(">>%s\n", path[i]);
+		i += 1;
+	}
+	i = 0;
+	while (path[i])
+	{
+		printf("%s\n", path[i]);
+		i += 1;
+	}
 }

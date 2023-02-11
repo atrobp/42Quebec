@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 21:41:32 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/10 14:18:03 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/10 19:54:56 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@ void	*ft_trimcmd(char *str);
 void	ft_check_cmd(t_list *p);
 void	ft_setspecial_cmd(t_list *p);
 void	ft_trim_input(t_list *p);
+char	**ft_split(char *str, char set);
 
 void	ft_exit(t_list *list);
+void	ft_valid_and_send(char **input, char **path);
 
 #endif
