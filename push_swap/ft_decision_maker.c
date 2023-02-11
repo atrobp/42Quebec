@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 11:06:21 by atopalli          #+#    #+#             */
-/*   Updated: 2023/01/26 16:14:37 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/11 16:39:39 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void	ft_strcpy(char *src, char *dst)
 
 void	ft_decide_next(t_struct *s)
 {
-	s->stackb = malloc(sizeof(int) * s->stacka_size);
-	s->tab = malloc(sizeof(int) * s->stacka_size + 1);
+	s->stackb = malloc(sizeof(int) * (s->stacka_size + 1));
+	s->tab = malloc(sizeof(int) * (s->stacka_size + 1));
 	s->temp_a = malloc(sizeof(char) * 4);
 	s->temp_b = malloc(sizeof(char) * 4);
 	s->stackb_size = -1;
-	if (s->stacka_size <= 5)
+	if (s->stacka_size <= 10)
 		ft_algofor5(s);
 	else
 	{
@@ -75,8 +75,8 @@ void	ft_decide_next(t_struct *s)
 			ft_algo_forbig(s);
 		else
 			ft_algo_formid(s);
-		free(s->tab);
 	}
+	free(s->tab);
 	free(s->stackb);
 	free(s->temp_a);
 	free(s->temp_b);
