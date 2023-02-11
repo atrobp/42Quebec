@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minishell.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anshimiy <anshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 21:41:32 by atopalli          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/02/10 19:54:56 by atopalli         ###   ########.fr       */
+=======
+/*   Updated: 2023/02/10 16:34:23 by anshimiy         ###   ########.fr       */
+>>>>>>> f1e66ab753c7e4efebdbdc185021937116d9c6c7
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +38,14 @@ typedef struct s_list
 	char	*spec_cmd[4];
 	size_t	len;
 }		t_list;
+
+{
+	{"HOME=/home", "user=atopalli", "pwd=Desktop"},
+}
+
+{
+	{"HOME=/home", "user=atopalli", "pwd=Desktop"},
+}
 
 /*			ft_mem_funcs			*/
 void	*ft_memcopy(void *s1, void *s2, size_t n, unsigned char stopat);

@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_command_func.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anshimiy <anshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:14:02 by atopalli          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/02/10 20:20:35 by atopalli         ###   ########.fr       */
+=======
+/*   Updated: 2023/02/10 15:36:16 by anshimiy         ###   ########.fr       */
+>>>>>>> f1e66ab753c7e4efebdbdc185021937116d9c6c7
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +102,7 @@ char	**ft_split(char *str, char set)
 			len += 1;
 	}
 	i = 0;
+<<<<<<< HEAD
 	j = 0;
 	array = malloc(sizeof(array) * (len + 1));
 	if (!array)
@@ -111,3 +116,6 @@ char	**ft_split(char *str, char set)
 	array[j] = NULL;
 	return (array);
 }
+=======
+}
+>>>>>>> f1e66ab753c7e4efebdbdc185021937116d9c6c7
