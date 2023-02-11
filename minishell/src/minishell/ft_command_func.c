@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_command_func.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anshimiy <anshimiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:14:02 by atopalli          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/02/10 20:20:35 by atopalli         ###   ########.fr       */
-=======
-/*   Updated: 2023/02/10 15:36:16 by anshimiy         ###   ########.fr       */
->>>>>>> f1e66ab753c7e4efebdbdc185021937116d9c6c7
+/*   Updated: 2023/02/11 10:16:05 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +58,7 @@ void	ft_check_cmd(t_list *p)
 	printf("%s\n", p->cmd);
 	if (i == 3)
 	{
-
-		// ft_valid_and_send(ft_split(p->cmd, '|'), ft_split(ft_getenv("PATH", p->env_vars), ':'));
+		ft_valid_and_send(ft_split(p->cmd, '|'), ft_split(ft_getenv("PATH", p->env_vars), ':'));
 	}
 	while (i < 3)
 		free(p->spec_cmd[i++]);
@@ -93,7 +88,7 @@ char	**ft_split(char *str, char set)
 	char	**array;
 
 	i = -1;
-	len = 1;
+	len = 0;
 	if (!str[0])
 		return (NULL);
 	while (str[++i])
@@ -102,20 +97,18 @@ char	**ft_split(char *str, char set)
 			len += 1;
 	}
 	i = 0;
-<<<<<<< HEAD
 	j = 0;
-	array = malloc(sizeof(array) * (len + 1));
+	array = malloc(sizeof(array) * len) + 1;
 	if (!array)
 		return (NULL);
 	while (str[i] && i < ft_memlen(str, END))
 	{
+		while (str[i] <= ' ')
+			i += 1;
 		array[j] = ft_memdup(str + i, EMPTY, set);
-		j += 1;
 		i += ft_memlen(str + i, set);
+		j += 1;
 	}
 	array[j] = NULL;
 	return (array);
 }
-=======
-}
->>>>>>> f1e66ab753c7e4efebdbdc185021937116d9c6c7

@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minishell.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anshimiy <anshimiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 21:41:32 by atopalli          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/02/10 19:54:56 by atopalli         ###   ########.fr       */
-=======
-/*   Updated: 2023/02/10 16:34:23 by anshimiy         ###   ########.fr       */
->>>>>>> f1e66ab753c7e4efebdbdc185021937116d9c6c7
+/*   Updated: 2023/02/11 10:08:00 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef FT_MINISHELL_H
 # define FT_MINISHELL_H
@@ -39,14 +36,6 @@ typedef struct s_list
 	size_t	len;
 }		t_list;
 
-{
-	{"HOME=/home", "user=atopalli", "pwd=Desktop"},
-}
-
-{
-	{"HOME=/home", "user=atopalli", "pwd=Desktop"},
-}
-
 /*			ft_mem_funcs			*/
 void	*ft_memcopy(void *s1, void *s2, size_t n, unsigned char stopat);
 size_t	ft_memlen(void *s1, unsigned char stopat);
@@ -72,6 +61,7 @@ void	ft_setspecial_cmd(t_list *p);
 void	ft_trim_input(t_list *p);
 char	**ft_split(char *str, char set);
 
+/*			ft_main.c				*/
 void	ft_exit(t_list *list);
 void	ft_valid_and_send(char **input, char **path);
 
