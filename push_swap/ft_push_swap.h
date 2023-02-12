@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 13:15:30 by atopalli          #+#    #+#             */
-/*   Updated: 2023/01/12 22:21:34 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/11 23:36:22 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define FT_PUSH_SWAP_H
 
 # include <limits.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 typedef struct s_struct
 {
@@ -34,7 +34,7 @@ typedef struct s_struct
 
 //func in main -- used for stack
 void	ft_split(char *str, int *array);
-long	ft_atol(char *str, int *stack);
+int		ft_atoi(char *str, int *stack);
 void	ft_errorfound(int *stack);
 
 //func in validate -- used for stack & args

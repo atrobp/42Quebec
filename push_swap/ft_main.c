@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atopalli <atopalli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 16:35:45 by atopalli          #+#    #+#             */
-/*   Updated: 2023/01/12 22:18:53 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/11 23:43:51 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_split(char *str, int *array)
 			if (*str <= 32)
 			{
 				temp[i] = 0;
-				array[index] = ft_atol(temp, array);
+				array[index] = ft_atoi(temp, array);
 				i = -1;
 				index += 1;
 			}
@@ -60,10 +60,10 @@ void	ft_split(char *str, int *array)
 	}
 }
 
-long	ft_atol(char *str, int *stack)
+int	ft_atoi(char *str, int *stack)
 {
-	int	num;
-	int	is_neg;
+	long	num;
+	int		is_neg;
 
 	num = 0;
 	is_neg = 1;
@@ -79,10 +79,9 @@ long	ft_atol(char *str, int *stack)
 	}
 	if (*str || num < INT_MIN || num > INT_MAX)
 	{
-		free(str);
 		ft_errorfound(stack);
 	}
-	return (num * is_neg);
+	return ((int)num * is_neg);
 }
 
 void	ft_errorfound(int *stack)
