@@ -6,7 +6,7 @@
 #    By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/24 15:05:30 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/11 22:59:22 by atopalli         ###   ########.fr        #
+#    Updated: 2023/02/12 01:06:04 by atopalli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,6 @@ $(NAME): $(FILESO)
 
 all: $(NAME)
 
-bonus: $(BONUSFO)
-	$(CC) $(BONUSF) -o $(BONUS)
-
 clean:
 	$(RM) $(FILESO) $(BONUSFO)
 
@@ -30,3 +27,5 @@ fclean: clean
 	$(RM) $(NAME) $(BONUS)
 
 re: fclean all
+
+.PHONY: all clean fclean re
