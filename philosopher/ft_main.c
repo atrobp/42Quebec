@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@42.quebec.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 14:47:50 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/15 12:58:47 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/15 13:07:08 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,19 @@ int	main(int ac, char **av)
 		p.t2sleep = ft_atoi(av[4]);
 		if (ac == 6)
 			p.t_must_eat = ft_atoi(av[5]);
-		// ft_philo(&p);
+		ft_philo(&p);
 	}
 	return (0);
 
 }
 
-// void	ft_philo(t_list *p)
+void	ft_philo(t_list *p)
+{
+	if (p)
+	{
+		;
+	}
+}
 // {
 // 	int	i;
 
