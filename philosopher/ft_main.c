@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@42.quebec.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 14:47:50 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/15 13:07:08 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/15 13:07:53 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,33 +43,27 @@ int	main(int ac, char **av)
 
 void	ft_philo(t_list *p)
 {
-	if (p)
+	int	i;
+
+	i = 0;
+	while (i < p->n_philo)
 	{
-		;
+		pthread_mutex_init(&p->phork[i], NULL);
+		i += 1;
+	}
+	i = 0;
+	while (i < p->n_philo)
+	{
+		pthread_create(&p->tid[i], NULL, ft_philo, (void *)p);
+		i += 1;
+	}
+	i = 0;
+	while (i < p->n_philo)
+	{
+		pthread_join(p->tid[i], NULL);
+		i += 1;
 	}
 }
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < p->n_philo)
-// 	{
-// 		pthread_mutex_init(&p->phork[i], NULL);
-// 		i += 1;
-// 	}
-// 	i = 0;
-// 	while (i < p->n_philo)
-// 	{
-// 		pthread_create(&p->tid[i], NULL, ft_philo, (void *)p);
-// 		i += 1;
-// 	}
-// 	i = 0;
-// 	while (i < p->n_philo)
-// 	{
-// 		pthread_join(p->tid[i], NULL);
-// 		i += 1;
-// 	}
-// }
 
 int	ft_atoi(char *str)
 {
