@@ -6,6 +6,6 @@
 
 - [x] Rank 02 --> 4 questions
 - [x] Rank 03 --> ft_printf | get_next_line
-- [] Rank 04  --> microshell
-- [] Rank 05  --> CCP exam
-- [] Rank 06  --> ????????
+- [ ] Rank 04  --> microshell
+- [ ] Rank 05  --> CCP exam
+- [ ] Rank 06  --> ????????
