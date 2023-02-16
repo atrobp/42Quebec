@@ -6,7 +6,7 @@
 /*   By: anshimiy <anshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:03:22 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/16 16:02:11 by anshimiy         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:17:52 by anshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	ft_valid_and_send(char **input, char **path)
 			printf("PATH --> %s/%s\n", path[j], tmp);
 			j += 1;
 		}
-		// free(tmp);
+		free(tmp);
 		i += 1;
 	}
 }

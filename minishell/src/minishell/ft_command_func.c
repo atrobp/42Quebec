@@ -6,7 +6,7 @@
 /*   By: anshimiy <anshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:14:02 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/16 15:47:15 by anshimiy         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:17:09 by anshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,12 +119,10 @@ void	ft_check_cmd(t_list *p)
 		free(p->spec_cmd[i]);
 		i += 1;
 	}
-	printf("%s\n", p->cmd);
 	if (i == 3)
-		system(p->cmd);
-	// {
-	// 	ft_valid_and_send(ft_split(p->cmd, '|'), ft_split(ft_getenv("PATH", p->env_vars), ':'));
-	// }
+	{
+		ft_valid_and_send(ft_split(p->cmd, '|'), ft_split(ft_getenv("PATH", p->env_vars), ':'));
+	}
 	while (i < 3)
 		free(p->spec_cmd[i++]);
 	free(p->cmd);
@@ -149,26 +147,24 @@ char	**ft_split(char *str, char set)
 {
 	size_t	i;
 	size_t	j;
-	size_t	len;
 	char	**array;
 
 	i = -1;
-	len = 0;
+	j = 0;
 	if (!str[0])
 		return (NULL);
 	while (str[++i])
-	{
 		if (str[i] == set)
-			len += 1;
-	}
+			j += 1;
+	array = malloc(sizeof(array) * (j + 1)) + 1;
 	i = 0;
 	j = 0;
-	array = malloc(sizeof(array) * len) + 1;
 	if (!array)
 		return (NULL);
+	array[0] = ft_memdup("me like apples", EMPTY, END);
 	while (str[i] && i < ft_memlen(str, END))
 	{
-		while (str[i] <= ' ')
+		while (str[i] == ' ')
 			i += 1;
 		array[j] = ft_memdup(str + i, EMPTY, set);
 		printf("1: %s\n", array[j]);
@@ -179,5 +175,6 @@ char	**ft_split(char *str, char set)
 	printf("2: %s\n", array[j]);
 	printf("i: %ld\n", j);
 	return (array);
+
 }
 

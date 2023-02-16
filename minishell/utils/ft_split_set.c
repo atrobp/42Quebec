@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_set.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anshimiy <anshimiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 14:48:10 by anshimiy          #+#    #+#             */
-/*   Updated: 2023/02/07 15:04:14 by anshimiy         ###   ########.fr       */
+/*   Updated: 2023/02/11 10:44:33 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	get_element_size(char *str, char *set)
 	}
 	return (size);
 }
-char	**ft_split_set(char *str, char *set)
+char	**ft_split_set(char *str, char set)
 {
 	char	**arr;
 	int		arr_len;
