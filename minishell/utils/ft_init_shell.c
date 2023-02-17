@@ -6,11 +6,11 @@
 /*   By: anshimiy <anshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 08:43:30 by anshimiy          #+#    #+#             */
-/*   Updated: 2023/02/13 10:11:29 by anshimiy         ###   ########.fr       */
+/*   Updated: 2023/02/17 13:01:04 by anshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_minishell.h"
+#include "../include/ft_minishell.h"
 
 # define DBQUOTE 34
 # define SQUOTE 39

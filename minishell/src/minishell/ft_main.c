@@ -6,7 +6,7 @@
 /*   By: anshimiy <anshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:03:22 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/16 18:46:58 by anshimiy         ###   ########.fr       */
+/*   Updated: 2023/02/17 17:17:48 by anshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	ft_exit(t_list *list)
 		free(list->env_vars[i]);
 		i += 1;
 	}
-	free(list->cmd);
 	free(list->env_vars);
+	free(list->cmd);
 }
 
 void	ft_valid_and_send(char **input, char **path)
@@ -80,10 +80,10 @@ void	ft_valid_and_send(char **input, char **path)
 	{
 		j = 0;
 		tmp = ft_memdup(input[i], EMPTY, ' ');
-		printf("CMD --> %s\n", tmp);
+		// printf("CMD --> %s\n", tmp);
 		while (path[j])
 		{
-			printf("PATH --> %s/%s\n", path[j], tmp);
+			// printf("PATH --> %s/%s\n", path[j], tmp);
 			j += 1;
 		}
 		free(tmp);

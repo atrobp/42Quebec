@@ -6,9 +6,11 @@
 /*   By: anshimiy <anshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 17:45:52 by anshimiy          #+#    #+#             */
-/*   Updated: 2023/02/11 10:43:10 by anshimiy         ###   ########.fr       */
+/*   Updated: 2023/02/17 13:01:01 by anshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../include/ft_minishell.h"
 
 // size_t number_of_strings = sizeof(names) / sizeof(names[0]);
 void ft_swap(char** s1, char** s2)

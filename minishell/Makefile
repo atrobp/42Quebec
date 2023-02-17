@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+         #
+#    By: anshimiy <anshimiy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 17:07:30 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/16 16:20:56 by atopalli         ###   ########.fr        #
+#    Updated: 2023/02/17 17:08:28 by anshimiy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,15 @@ NAME		=	minishell
 
 # SRCS FILES
 MSFOLDER	=	./src/minishell/
+UTFOLDER	=	./utils/
 MSFILES		= 	$(MSFOLDER)ft_allocations_funcs.c	\
 				$(MSFOLDER)ft_env_funcs.c			\
 				$(MSFOLDER)ft_mem_functions.c		\
 				$(MSFOLDER)ft_main.c				\
 			   	$(MSFOLDER)ft_command_func.c		\
+			   	$(UTFOLDER)ft_split_set.c				\
+			   	$(UTFOLDER)commands/ft_edit_env.c		\
+			   	$(UTFOLDER)commands/ft_export.c		\
 
 # FLAGS AND OBJECTS FILES
 # CFLAGS		=	-Wall -Wextra -Werror
@@ -40,10 +44,12 @@ RL_LIB		= 	./include/readline/libreadline.a	\
 				./include/readline/libhistory.a		\
 				-lreadline -lcurses
 
+export VERBOSE	=	FALSE
+
 # COMPILATION
 $(NAME): 		$(OFILES)
 	@echo "$(GREEN)Compiling minishell...$(RESET)"
-	@$(CC)		$(CFLAGS) $(MSFILES) -o $(NAME) $(RL_LIB)
+	 $(CC)		$(CFLAGS) $(MSFILES) -o $(NAME) $(RL_LIB)
 	@echo "$(GREEN)Minishell compiled!$(RESET)"
 
 all: 			$(NAME)

@@ -6,7 +6,7 @@
 /*   By: anshimiy <anshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 21:41:32 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/11 11:52:43 by anshimiy         ###   ########.fr       */
+/*   Updated: 2023/02/17 17:26:01 by anshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,12 @@ char	**ft_split(char *str, char set);
 /*			ft_main.c				*/
 void	ft_exit(t_list *list);
 void	ft_valid_and_send(char **input, char **path);
+
+/*			others					*/
+void	ft_print_env(t_list *list);
+char	**ft_split_set(char *str, char* set);
+void    ft_edit_env(char* name, char* buffer, t_list *list);
+size_t	ft_strlen(const char *s);
+void	ft_free_str_array(char **array);
 
 #endif
