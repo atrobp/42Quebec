@@ -1,10 +1,10 @@
 # Cercle3
 
-`minishell`
+`minishell` 
 
-:us: The goal of this project is to create a simple shell.
+:us: The goal of this project is to create a simple shell. Team project | [@alexHonore](https://github.com/alexHonore)
 
-:fr: L'objectif de ce projet est de créer un simple shell.
+:fr: L'objectif de ce projet est de créer un simple shell. Projet d'equipe | [@alexHonore](https://github.com/alexHonore)
 
 - - -
 
