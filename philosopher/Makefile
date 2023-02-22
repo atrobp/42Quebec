@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atopalli <atopalli@42.quebec.com>          +#+  +:+       +#+         #
+#    By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/15 12:03:13 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/15 13:02:31 by atopalli         ###   ########.fr        #
+#    Updated: 2023/02/22 13:08:07 by atopalli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
