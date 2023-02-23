@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: atopalli <atopalli@42.quebec.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 14:47:50 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/22 13:23:00 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/23 00:52:34 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,12 @@
 int	main(int ac, char **av)
 {
 	t_list	p;
-	int		i;
 
-	i = 0;
-	if (ac >= 5 && ac <= 6)
-	{
-		p = ft_philo_check(ac, av);
-		if (p.valid == true)
-		{
-			ft_philo_init(&p);
-		}
-	}
-	return (0);
+	if (ac != 5 && ac != 6)
+		return (0);
+	if (!ft_philo_check(&p, ac, av))
+		return (0);
+	ft_philo_init(&p);
 
 }
 
@@ -56,9 +50,8 @@ void	ft_philo_init(t_list *p)
 	}
 }
 
-t_list	ft_philo_check(int ac, char **av)
+bool	ft_philo_check(t_list *p, int ac, char **av)
 {
-	t_list	p;
 	int		i;
 
 	i = 0;
@@ -66,23 +59,20 @@ t_list	ft_philo_check(int ac, char **av)
 	{
 		if (ft_atoi(av[i]) <= 0)
 		{
-			p.valid = false;
-			return (p);
+			return (false);
 		}
 	}
-	i = 0;
-	p.t_must_eat = -1;
-	p.n_philo = ft_atoi(av[1]);
-	p.phork = malloc(sizeof(p.phork) * p.n_philo);
-	p.tid = malloc(sizeof(p.tid) * p.n_philo);
-	p.tt_die_index = malloc(sizeof(int) * p.n_philo);
-	p.t2die = ft_atoi(av[2]);
-	p.t2eat = ft_atoi(av[3]);
-	p.t2sleep = ft_atoi(av[4]);
+	p->t_must_eat = 0;
+	p->n_philo = ft_atoi(av[1]);
+	p->phork = malloc(sizeof(p->phork) * p->n_philo);
+	p->tid = malloc(sizeof(p->tid) * p->n_philo);
+	p->tt_die_index = malloc(sizeof(int) * p->n_philo);
+	p->t2die = ft_atoi(av[2]);
+	p->t2eat = ft_atoi(av[3]);
+	p->t2sleep = ft_atoi(av[4]);
 	if (ac == 6)
-		p.t_must_eat = ft_atoi(av[5]);
-	p.valid = true;
-	return (p);
+		p->t_must_eat = ft_atoi(av[5]);
+	return (true);
 }
 
 int	ft_atoi(char *str)
@@ -94,9 +84,16 @@ int	ft_atoi(char *str)
 	final = 0;
 	if (str[0] != '-' && str[0] != '0')
 	{
-		while (str[i] >= '0' && str[i] <= '9')
+		while (str[i])
 		{
-			final = final * 10 + (str[i] - '0');
+			if (str[i] >= '0' && str[i] <= '9')
+			{
+				final = final * 10 + (str[i] - '0');
+			}
+			else
+			{
+				return (0);
+			}
 			i += 1;
 		}
 		return (final);

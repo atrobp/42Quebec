@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_philo.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: atopalli <atopalli@42.quebec.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 14:48:56 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/22 13:04:26 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/23 00:55:01 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,17 @@ typedef struct s_list
 	int				t2eat;
 	int				t2sleep;
 	int				t_must_eat;
-	bool			valid;
 }	t_list;
+
+typedef struct s_philo
+{
+	int	n_philo;
+
+}
 
 int		ft_atoi(char *str);
 void	ft_philo_init(t_list *p);
-t_list	ft_philo_check(int ac, char **av);
+bool	ft_philo_check(t_list *p, int ac, char **av);
 void	*ft_philosopher(void *arg);
 
 #endif
