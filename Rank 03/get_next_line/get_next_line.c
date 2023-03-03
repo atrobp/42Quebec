@@ -24,7 +24,7 @@ char	*_strdup(char *src, char *dst, int call, int *newline) {
 	return temp;
 }
 
-int	get_next_line(int fd) {
+char	*get_next_line(int fd) {
 	char	*src = NULL, dst[3];
 	int		call, newline;
 
