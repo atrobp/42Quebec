@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   philo.c                                        ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/04 20:32:30 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/05 11:30:40 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/05 16:51:16 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	*ft_philo(void *arg)
 	while (1)
 	{
 		// ft_eat(philo);
-		ft_print(philo, philo->id, "is eating");
+		// ft_print(philo, philo->id, "is eating");
 		// ft_sleep(philo);
 		// printf("philo %d is thinking\n", philo->id);
 		ft_print(philo, philo->id, "is thinking");
-		// exit(0);
+		exit(0);
 	}
 	return (NULL);
 }

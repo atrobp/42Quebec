@@ -6,7 +6,7 @@
 #    By: atopalli | github/atrobp                   ███████║ █████╔╝           #
 #                                                   ╚════██║██╔═══╝            #
 #    Created: 2023/03/04 19:47:56 by atopalli            ██║███████╗           #
-#    Updated: 2023/03/04 21:26:12 by atopalli            ╚═╝╚══════╝.qc        #
+#    Updated: 2023/03/05 16:31:23 by atopalli            ╚═╝╚══════╝.qc        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ all:		$(PROJECT)
 $(PROJECT): $(FILES)
 			@for i in $$(seq 1 20); do \
 				printf "\rCompiling $(PROJECT) [$(GREEN)$$((5*i))$(RESET)]"; \
-				sleep 0.045; \
+				sleep 0.023456789; \
 			done
 			@$(GCC) $(FILES) -o $(PROJECT)
 			@echo "\r$(GREEN)$(PROJECT) compiled$(RESET)       " || echo "\r$(RED)Build failed$(RESET)          "

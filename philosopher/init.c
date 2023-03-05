@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   init.c                                         ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/04 20:14:47 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/05 01:13:08 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/05 16:42:56 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ unsigned int	ft_initthreads(t_data *data)
 	while (i < data->n_philo)
 	{
 		if (pthread_create(&data->philo[i].thread, NULL, &ft_philo,
-				&data->philo[i]) != 0)
+				(void *)&data) != 0)
 			return (EXIT_FAILURE);
 		i++;
 	}

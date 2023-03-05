@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   main.c                                         ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/04 19:55:21 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/05 11:30:19 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/05 17:08:49 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, const char *argv[])
 		return (EXIT_FAILURE);
 	while (++i < argc)
 	{
-		if (ft_atoi(argv[i]) == 0)
+		if (!(ft_atoi(argv[i]) > EXIT_SUCCESS))
 			return (EXIT_FAILURE);
 	}
 	if (ft_initdata(&data, argv) == EXIT_FAILURE)
@@ -33,15 +33,17 @@ int	main(int argc, const char *argv[])
 unsigned int	ft_atoi(const char *str)
 {
 	unsigned int	res;
+	unsigned int	i;
 
 	res = 0;
-	if (*str == '0' && res == 0)
-		return (0);
-	while (*str >= '0' && *str <= '9')
+	i = 0;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		res = res * 10 + *str - '0';
-		str++;
+		res = res * 10 + str[i] - '0';
+		i++;
 	}
+	if (str[i] != '\0' || str[0] == '0')
+		return (0);
 	return (res);
 }
 
@@ -52,7 +54,7 @@ void	ft_print(t_philo *philo, unsigned int id, char *str)
 	// pthread_mutex_lock(&philo->data->print);
 	// printf("%ld %d %s\n", time, id, str);
 	(void)philo;
-	printf("%d %s\n", id, str);
+	printf("%u %s\n", id, str);
 	// pthread_mutex_unlock(&philo->data->print);
 }
 
