@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   init.c                                         ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/04 20:14:47 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/04 22:38:00 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/05 01:13:08 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,11 @@ unsigned int	ft_initmutex(t_data *data)
 	{
 		if (pthread_mutex_init(&data->philo[i].left_fork, NULL) != 0)
 			return (EXIT_FAILURE);
-		if (i == data->n_philo - 1)
-			data->philo[i].right_fork = &data->philo[0].left_fork;
-		else
+		if (i < data->n_philo - 1)
 			data->philo[i].right_fork = &data->philo[i + 1].left_fork;
 		i++;
 	}
+	data->philo[i - 1].right_fork = &data->philo[0].left_fork;
 	return (EXIT_SUCCESS);
 }
 

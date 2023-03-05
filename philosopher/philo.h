@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   philo.h                                        ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/04 20:04:41 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/04 22:37:22 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/05 11:29:31 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_philo
 {
 	unsigned int	id;
 	unsigned int	n_eat;
-	unsigned int	last_eat;
+	unsigned long	last_eat;
 	pthread_t		thread;
 	pthread_mutex_t	left_fork;
 	pthread_mutex_t	*right_fork;
@@ -40,7 +40,7 @@ typedef struct s_data
 	unsigned int	t_eat;
 	unsigned int	t_sleep;
 	unsigned int	n_eat;
-	unsigned int	start;
+	unsigned long	start;
 	t_philo			*philo;
 	pthread_mutex_t	eat;
 	pthread_mutex_t	print;
@@ -50,7 +50,7 @@ typedef struct s_data
 //  main.c
 unsigned int		ft_atoi(const char *str);
 void				ft_print(t_philo *philo, unsigned int id, char *str);
-unsigned int		ft_gettime(void);
+unsigned long		ft_gettime(void);
 
 //  init.c
 unsigned int		ft_initdata(t_data *data, const char *argv[]);
@@ -59,7 +59,7 @@ unsigned int		ft_initthreads(t_data *data);
 
 //  philo.c
 void				*ft_philo(void *arg);
-void				ft_eat(t_data *data);
+void				ft_eat(t_philo *philo);
 void				ft_sleep(t_philo *philo);
 void				ft_think(t_data *data);
 

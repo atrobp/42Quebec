@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   main.c                                         ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/04 19:55:21 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/04 22:37:14 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/05 11:30:19 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,16 @@ unsigned int	ft_atoi(const char *str)
 
 void	ft_print(t_philo *philo, unsigned int id, char *str)
 {
-	unsigned int	time;
-
-	time = ft_gettime() - philo->data->start;
-	pthread_mutex_lock(&philo->data->print);
-	printf("%d %d %s\n", time, id, str);
-	pthread_mutex_unlock(&philo->data->print);
+	// unsigned long	time;
+	// time = ft_gettime() - philo->data->start;
+	// pthread_mutex_lock(&philo->data->print);
+	// printf("%ld %d %s\n", time, id, str);
+	(void)philo;
+	printf("%d %s\n", id, str);
+	// pthread_mutex_unlock(&philo->data->print);
 }
 
-unsigned int	ft_gettime(void)
+unsigned long	ft_gettime(void)
 {
 	struct timeval	tv;
 
