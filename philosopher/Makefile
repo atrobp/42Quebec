@@ -1,40 +1,52 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/15 12:03:13 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/22 13:08:07 by atopalli         ###   ########.fr        #
+#                                                   if(success){};             #
+#    Makefile                                       ██╗  ██╗██████╗            #
+#                                                   ██║  ██║╚════██╗           #
+#    By: atopalli | github/atrobp                   ███████║ █████╔╝           #
+#                                                   ╚════██║██╔═══╝            #
+#    Created: 2023/03/04 19:47:56 by atopalli            ██║███████╗           #
+#    Updated: 2023/03/04 21:26:12 by atopalli            ╚═╝╚══════╝.qc        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	philo
-FLAGS	=	-Wall -Wextra -Werror
-GCC		=	gcc $(FLAGS) -pthread -o $(NAME)
+# VARS
+PROJECT	=	philo
+GCC		=	gcc -Wall -Wextra -Werror -pthread
+RM		=	rm -f
 
-SRC		=	ft_main.c	\
-			ft_philo.c	\
+# SRCS
+FILES	=	main.c init.c philo.c
 
-GREEN = \033[0;32m
-YELLOW = \033[0;33m
-RED = \033[0;31m
-NC = \033[0m
+# COLORS
+RED		=	\033[0;31m
+GREEN	=	\033[0;32m
+YELLOW	=	\033[0;33m
+BLUE	=	\033[0;34m
+PURPLE	=	\033[0;35m
+CYAN	=	\033[0;36m
+WHITE	=	\033[0;37m
+RESET	=	\033[0m
 
-$(NAME): $(SRC)
-	@echo "$(YELLOW)Compiling... philosopher$(NC)"
-	@$(GCC) $(SRC)
-	@echo "$(GREEN)Compilation done!$(NC)"
+# RULES
+all:		$(PROJECT)
 
-all: $(NAME)
+$(PROJECT): $(FILES)
+			@for i in $$(seq 1 20); do \
+				printf "\rCompiling $(PROJECT) [$(GREEN)$$((5*i))$(RESET)]"; \
+				sleep 0.045; \
+			done
+			@$(GCC) $(FILES) -o $(PROJECT)
+			@echo "\r$(GREEN)$(PROJECT) compiled$(RESET)       " || echo "\r$(RED)Build failed$(RESET)          "
 
 clean:
-	@rm -f $(NAME)
-	@echo "$(RED)Clean done!$(NC)"
+			@if [ -f $(PROJECT) ]; then \
+				$(RM) $(PROJECT); \
+				echo "$(RED)$(PROJECT) removed$(RESET)"; \
+			fi
 
-fclean: clean
+fclean:		clean
 
-re: fclean all
+re:			fclean all
 
-.PHONY: all clean fclean re
+.PHONY:		all clean fclean re
