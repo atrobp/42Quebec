@@ -1,6 +1,6 @@
 # Cercle1
 
-`ft_print`
+`ft_print`  |   [pdf](https://cdn.intra.42.fr/pdf/pdf/59645/en.subject.pdf)
 
 :us: This project is to recode printf. This project is mainly about variable size arguments, va_list and variables types.
 
@@ -8,7 +8,7 @@
 
 - - -
 
-`get_next_line`
+`get_next_line` |   [pdf](https://cdn.intra.42.fr/pdf/pdf/58203/en.subject.pdf)
 
 :us: This project consists of reading a file one line at a time from a given buffer, here we learn about static variables, but also how to manage them.
 
@@ -16,7 +16,7 @@
 
 - - -
 
-`born2beroot`
+`born2beroot`   |   [pdf](https://cdn.intra.42.fr/pdf/pdf/58215/en.subject.pdf)
 
 :us: The project is about dealing with an OS just like an admin system, but on a vm.
 
