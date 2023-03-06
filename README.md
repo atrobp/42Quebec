@@ -1,6 +1,6 @@
 # Cercle2
 
-`pipex`
+`pipex` |   [pdf](https://cdn.intra.42.fr/pdf/pdf/66940/en.subject.pdf)
 
 :us: This project aims to deepen your understanding of: Redirection and Pipes.
 
@@ -16,7 +16,7 @@
 
 - - -
 
-`so_long`
+`so_long`   |   [pdf](https://cdn.intra.42.fr/pdf/pdf/66925/en.subject.pdf)
 
 :us: Graphical first project using MLX42, the purpose of this project is about creating, managing windows also user inputs, here is about creating a 2D game.
 
@@ -24,7 +24,7 @@
 
 - - -
 
-`push_swap`
+`push_swap` |   [pdf](https://cdn.intra.42.fr/pdf/pdf/66936/en.subject.pdf)
 
 :us: This project asks you to sort data on a stack, with a limited set of instructions by manipulating different sorting algorithms.
 
