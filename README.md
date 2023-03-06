@@ -1,6 +1,6 @@
 # Cercle3
 
-`minishell` 
+`minishell` |   [pdf](https://cdn.intra.42.fr/pdf/pdf/66947/en.subject.pdf)
 
 :us: The goal of this project is to create a simple shell. Team project | [@alexHonore](https://github.com/alexHonore)
 
@@ -8,7 +8,7 @@
 
 - - -
 
-`philosopher`
+`philosopher`   |   [pdf](https://cdn.intra.42.fr/pdf/pdf/66944/en.subject.pdf)
 
 :us: This project is about handling threads, time execution, thread synchronization and mutex.
 
