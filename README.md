@@ -8,15 +8,15 @@
 
 - - -
 
-`cub3d`
+`cub3d` |   [pdf](https://cdn.intra.42.fr/pdf/pdf/58211/en.subject.pdf)
 
-:us: The project is inspired by the game Wolf einstein 3D.
+:us: The project is inspired by the game Wolf einstein 3D. Team project | [@Diego-Luna](https://github.com/Diego-Luna)
 
-:fr: Le projet est inspiré du jeu Wolf einstein 3D.
+:fr: Le projet est inspiré du jeu Wolf einstein 3D. Projet d'équipe | [@Diego-Luna](https://github.com/Diego-Luna)
 
 - - -
 
-`NetPractice`
+`NetPractice`   [pdf](https://cdn.intra.42.fr/pdf/pdf/58184/en.subject.pdf)
 
 :us: Introduction to networks.
 
