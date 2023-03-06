@@ -6,3 +6,4 @@
 
 :fr: Ce premier projet a pour but de recoder un certain nombre de fonctions de la librairie C standard, ainsi que d'autres fonctions utilitaires
 
+### [PDF](https://cdn.intra.42.fr/pdf/pdf/66950/en.subject.pdf)
