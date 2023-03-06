@@ -6,7 +6,7 @@
 /*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/04 20:04:41 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/05 11:29:31 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/05 21:04:14 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ typedef struct s_data
 
 //  main.c
 unsigned int		ft_atoi(const char *str);
-void				ft_print(t_philo *philo, unsigned int id, char *str);
 unsigned long		ft_gettime(void);
+void				ft_print(t_philo *philo, char *str);
 
 //  init.c
 unsigned int		ft_initdata(t_data *data, const char *argv[]);
+void				ft_initphilo(t_data *data);
 unsigned int		ft_initmutex(t_data *data);
 unsigned int		ft_initthreads(t_data *data);
 
@@ -61,6 +62,7 @@ unsigned int		ft_initthreads(t_data *data);
 void				*ft_philo(void *arg);
 void				ft_eat(t_philo *philo);
 void				ft_sleep(t_philo *philo);
-void				ft_think(t_data *data);
+void				ft_think(t_philo *philo);
+void				ft_usleep(unsigned int time);
 
 #endif

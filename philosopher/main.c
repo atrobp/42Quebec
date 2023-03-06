@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   main.c                                         ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/04 19:55:21 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/05 17:08:49 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/05 20:55:47 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,20 @@ unsigned int	ft_atoi(const char *str)
 	return (res);
 }
 
-void	ft_print(t_philo *philo, unsigned int id, char *str)
-{
-	// unsigned long	time;
-	// time = ft_gettime() - philo->data->start;
-	// pthread_mutex_lock(&philo->data->print);
-	// printf("%ld %d %s\n", time, id, str);
-	(void)philo;
-	printf("%u %s\n", id, str);
-	// pthread_mutex_unlock(&philo->data->print);
-}
-
 unsigned long	ft_gettime(void)
 {
-	struct timeval	tv;
+	struct timeval	time;
 
-	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+void	ft_print(t_philo *philo, char *str)
+{
+	unsigned long	time;
+
+	pthread_mutex_lock(&philo->data->print);
+	time = ft_gettime() - philo->data->start;
+	printf("%lu %d %s\n", time, philo->id, str);
+	pthread_mutex_unlock(&philo->data->print);
 }

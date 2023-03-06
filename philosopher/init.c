@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   init.c                                         ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/04 20:14:47 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/05 16:42:56 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/05 20:55:14 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 unsigned int	ft_initdata(t_data *data, const char *argv[])
 {
-	int	i;
-
-	i = -1;
 	data->n_philo = ft_atoi(argv[1]);
 	data->t_die = ft_atoi(argv[2]);
 	data->t_eat = ft_atoi(argv[3]);
@@ -28,17 +25,27 @@ unsigned int	ft_initdata(t_data *data, const char *argv[])
 	data->philo = malloc(sizeof(t_philo) * data->n_philo);
 	if (!data->philo)
 		return (EXIT_FAILURE);
-	while (++i < (int)data->n_philo)
-	{
-		data->philo[i].id = i + 1;
-		data->philo[i].n_eat = 0;
-		data->philo[i].last_eat = 0;
-	}
+	ft_initphilo(data);
 	if (ft_initmutex(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (ft_initthreads(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
+}
+
+void	ft_initphilo(t_data *data)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (i < data->n_philo)
+	{
+		data->philo[i].id = i + 1;
+		data->philo[i].data = data;
+		data->philo[i].last_eat = ft_gettime();
+		data->philo[i].n_eat = 0;
+		i++;
+	}
 }
 
 unsigned int	ft_initmutex(t_data *data)
@@ -72,7 +79,7 @@ unsigned int	ft_initthreads(t_data *data)
 	while (i < data->n_philo)
 	{
 		if (pthread_create(&data->philo[i].thread, NULL, &ft_philo,
-				(void *)&data) != 0)
+				&data->philo[i]) != 0)
 			return (EXIT_FAILURE);
 		i++;
 	}
