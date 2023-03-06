@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   init.c                                         ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/04 20:14:47 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/05 20:55:14 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/06 17:02:02 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ unsigned int	ft_initdata(t_data *data, const char *argv[])
 	data->n_eat = 0;
 	if (argv[5])
 		data->n_eat = ft_atoi(argv[5]);
+	data->is_dead = 0;
 	data->start = ft_gettime();
 	data->philo = malloc(sizeof(t_philo) * data->n_philo);
 	if (!data->philo)
@@ -84,11 +85,16 @@ unsigned int	ft_initthreads(t_data *data)
 		i++;
 	}
 	i = 0;
+	if (pthread_create(&data->chec_dead, NULL, &ft_tread_chec_dead,
+			&data) != 0)
+	i = 0;
 	while (i < data->n_philo)
 	{
 		if (pthread_join(data->philo[i].thread, NULL) != 0)
 			return (EXIT_FAILURE);
 		i++;
 	}
+	if (pthread_join(data->chec_dead, NULL) != 0)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   philo.h                                        ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/04 20:04:41 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/05 21:04:14 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/06 16:26:25 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ typedef struct s_data
 	unsigned int	t_sleep;
 	unsigned int	n_eat;
 	unsigned long	start;
+	unsigned int	is_dead;
 	t_philo			*philo;
 	pthread_mutex_t	eat;
 	pthread_mutex_t	print;
 	pthread_mutex_t	sleep;
+	pthread_mutex_t	dead;
+	pthread_t		chec_dead;
 }					t_data;
 
 //  main.c
@@ -60,9 +63,10 @@ unsigned int		ft_initthreads(t_data *data);
 
 //  philo.c
 void				*ft_philo(void *arg);
-void				ft_eat(t_philo *philo);
-void				ft_sleep(t_philo *philo);
-void				ft_think(t_philo *philo);
+int					ft_eat(t_philo *philo);
+int					ft_sleep(t_philo *philo);
+int					ft_think(t_philo *philo);
 void				ft_usleep(unsigned int time);
+void				*ft_tread_chec_dead(void *arg);
 
 #endif
