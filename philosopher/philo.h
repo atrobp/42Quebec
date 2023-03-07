@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   philo.h                                        ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:23:47 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/06 23:21:28 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/07 01:12:46 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ typedef struct s_philo
 	unsigned int	philo_id;
 	unsigned long	last_meal;
 	unsigned int	eat_time;
+	pthread_t		thread;
 	pthread_mutex_t	left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_t		thread;
 	struct s_info	*info;
 }					t_philo;
 
@@ -50,14 +50,14 @@ typedef struct s_info
 }					t_info;
 
 // UTILS.C
-unsigned int		ft_atoi(const char *str);
-unsigned long		ft_gettime(void);
+int					ft_atoi(const char *str);
+void				ft_gettime(unsigned long *number);
 
 // INIT.C
 int					ft_initinfo(t_info *info, const char **av);
 int					ft_initmutex_threads(t_info *info);
 
 // PHILO.C
-void				*ft_routine(t_philo *philo);
+void				*ft_routine(void *info);
 
 #endif

@@ -3,16 +3,16 @@
 /*                                                  if(success){};            */
 /*   utils.c                                        ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:23:05 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/06 23:13:30 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/07 01:24:10 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-unsigned int	ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int	num;
 	int	i;
@@ -29,10 +29,12 @@ unsigned int	ft_atoi(const char *str)
 	return (num);
 }
 
-unsigned long	ft_gettime(void)
+// get start time in milliseconds and store it in number pointer
+void	ft_gettime(unsigned long *number)
 {
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+	*number = (time.tv_sec * 1000) + (time.tv_usec / 1000);
+	printf("start time: %ld", *number);
 }

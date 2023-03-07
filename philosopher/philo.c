@@ -3,17 +3,19 @@
 /*                                                  if(success){};            */
 /*   philo.c                                        ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 22:34:17 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/06 23:22:09 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/07 01:17:06 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*ft_routine(t_philo *philo)
+void	*ft_routine(void *arg)
 {
-	printf("%lu %u\n", philo->info->start, philo->philo_id);
+	// t_philo	*philo;
+	// philo = (t_philo *)arg;
+	(void)arg;
 	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   init.c                                         ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:40:44 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/06 23:38:21 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/07 01:17:35 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	ft_initinfo(t_info *info, const char **av)
 		info->philos[i].eat_time = 0;
 		i += 1;
 	}
-	info->start = ft_gettime();
+	ft_gettime(&info->start);
+	// info->start = 0;
 	return (ft_initmutex_threads(info));
 }
 
