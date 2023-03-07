@@ -5,68 +5,59 @@
 /*                                                  ██║  ██║╚════██╗          */
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/03/04 20:04:41 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/06 16:26:25 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Created: 2023/03/06 20:23:47 by atopalli            ██║███████╗          */
+/*   Updated: 2023/03/06 23:21:28 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+# define EXIT_SUCCESS 0
+# define EXIT_FAILURE 1
+
 # include <pthread.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
 
-# define EXIT_SUCCESS 0
-# define EXIT_FAILURE 1
-
 typedef struct s_philo
 {
-	unsigned int	id;
-	unsigned int	n_eat;
-	unsigned long	last_eat;
-	pthread_t		thread;
+	unsigned int	philo_id;
+	unsigned long	last_meal;
+	unsigned int	eat_time;
 	pthread_mutex_t	left_fork;
 	pthread_mutex_t	*right_fork;
-	struct s_data	*data;
+	pthread_t		thread;
+	struct s_info	*info;
 }					t_philo;
 
-typedef struct s_data
+typedef struct s_info
 {
-	unsigned int	n_philo;
-	unsigned int	t_die;
-	unsigned int	t_eat;
-	unsigned int	t_sleep;
-	unsigned int	n_eat;
+	unsigned int	nbr_philo;
+	unsigned int	t2die;
+	unsigned int	t2eat;
+	unsigned int	t2sleep;
+	unsigned int	n_must_eat;
 	unsigned long	start;
-	unsigned int	is_dead;
-	t_philo			*philo;
-	pthread_mutex_t	eat;
-	pthread_mutex_t	print;
-	pthread_mutex_t	sleep;
-	pthread_mutex_t	dead;
-	pthread_t		chec_dead;
-}					t_data;
+	bool			is_dead;
+	pthread_mutex_t	sleeping;
+	pthread_mutex_t	eating;
+	pthread_mutex_t	writing;
+	t_philo			*philos;
+}					t_info;
 
-//  main.c
+// UTILS.C
 unsigned int		ft_atoi(const char *str);
 unsigned long		ft_gettime(void);
-void				ft_print(t_philo *philo, char *str);
 
-//  init.c
-unsigned int		ft_initdata(t_data *data, const char *argv[]);
-void				ft_initphilo(t_data *data);
-unsigned int		ft_initmutex(t_data *data);
-unsigned int		ft_initthreads(t_data *data);
+// INIT.C
+int					ft_initinfo(t_info *info, const char **av);
+int					ft_initmutex_threads(t_info *info);
 
-//  philo.c
-void				*ft_philo(void *arg);
-int					ft_eat(t_philo *philo);
-int					ft_sleep(t_philo *philo);
-int					ft_think(t_philo *philo);
-void				ft_usleep(unsigned int time);
-void				*ft_tread_chec_dead(void *arg);
+// PHILO.C
+void				*ft_routine(t_philo *philo);
 
 #endif

@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                  if(success){};            */
-/*   main.c                                         ██╗  ██╗██████╗           */
+/*   utils.c                                        ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/03/04 19:55:21 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/06 23:13:18 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Created: 2023/03/06 20:23:05 by atopalli            ██║███████╗          */
+/*   Updated: 2023/03/06 23:13:30 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, const char **argv)
+unsigned int	ft_atoi(const char *str)
 {
-	int		i;
-	t_info	info;
+	int	num;
+	int	i;
 
-	i = 1;
-	if (argc != 5 && argc != 6)
-		return (EXIT_FAILURE);
-	while (i < argc)
+	i = 0;
+	num = 0;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (!(ft_atoi(argv[i]) > EXIT_SUCCESS))
-			return (EXIT_FAILURE);
+		num = num * 10 + str[i] - '0';
 		i += 1;
 	}
-	ft_initinfo(&info, argv);
-	return (EXIT_SUCCESS);
+	if (str[i] || str[0] == '0')
+		return (0);
+	return (num);
+}
+
+unsigned long	ft_gettime(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }

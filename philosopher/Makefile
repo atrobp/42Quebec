@@ -6,7 +6,7 @@
 #    By: atopalli | github/atrobp                   ███████║ █████╔╝           #
 #                                                   ╚════██║██╔═══╝            #
 #    Created: 2023/03/04 19:47:56 by atopalli            ██║███████╗           #
-#    Updated: 2023/03/05 16:31:23 by atopalli            ╚═╝╚══════╝.qc        #
+#    Updated: 2023/03/06 23:14:47 by atopalli            ╚═╝╚══════╝.qc        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ GCC		=	gcc -Wall -Wextra -Werror -pthread
 RM		=	rm -f
 
 # SRCS
-FILES	=	main.c init.c philo.c
+FILES	=	main.c init.c utils.c philo.c
 
 # COLORS
 RED		=	\033[0;31m
