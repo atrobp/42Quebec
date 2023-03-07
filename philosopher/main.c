@@ -3,16 +3,16 @@
 /*                                                  if(success){};            */
 /*   main.c                                         ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/04 19:55:21 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/06 23:13:18 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/07 09:36:08 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, const char **argv)
+int	main(int argc, const char *argv[])
 {
 	int		i;
 	t_info	info;
@@ -26,6 +26,5 @@ int	main(int argc, const char **argv)
 			return (EXIT_FAILURE);
 		i += 1;
 	}
-	ft_initinfo(&info, argv);
-	return (EXIT_SUCCESS);
+	return (ft_initinfo(&info, argv));
 }

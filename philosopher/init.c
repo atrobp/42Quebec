@@ -6,7 +6,7 @@
 /*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:40:44 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/07 01:17:35 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/07 09:33:50 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	ft_initinfo(t_info *info, const char **av)
 		i += 1;
 	}
 	ft_gettime(&info->start);
-	// info->start = 0;
 	return (ft_initmutex_threads(info));
 }
 
