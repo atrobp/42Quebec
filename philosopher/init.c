@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   init.c                                         ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:40:44 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/07 23:57:37 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/08 00:57:34 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,10 @@ int	ft_initmutex_threads(t_info *info)
 {
 	int	i;
 
-	if (pthread_mutex_init(&info->eating, NULL))
-		return (EXIT_FAILURE);
+	info->is_dead = false;
 	if (pthread_mutex_init(&info->writing, NULL))
 		return (EXIT_FAILURE);
-	if (pthread_mutex_init(&info->sleeping, NULL))
+	if (pthread_mutex_init(&info->dead, NULL))
 		return (EXIT_FAILURE);
 	i = -1;
 	while (++i < (int)info->nbr_philo)

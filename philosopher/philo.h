@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   philo.h                                        ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:23:47 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/07 23:41:51 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/08 00:55:15 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,8 @@ typedef struct s_info
 	unsigned int	n_must_eat;
 	unsigned long	start;
 	bool			is_dead;
-	pthread_mutex_t	sleeping;
-	pthread_mutex_t	eating;
 	pthread_mutex_t	writing;
+	pthread_mutex_t	dead;
 	t_philo			*philos;
 }					t_info;
 
@@ -53,6 +52,7 @@ typedef struct s_info
 
 int					ft_atoi(const char *str);
 unsigned long		ft_gettime(void);
+void				ft_usleep(unsigned int time);
 
 // INIT.C
 
@@ -62,5 +62,11 @@ int					ft_initmutex_threads(t_info *info);
 // PHILO.C
 
 void				*ft_routine(void *info);
+void				ft_print(t_philo *philo, unsigned int id,
+						const char *action);
+
+// ACTION.C
+void				ft_eating(t_philo *philo);
+void				ft_thinking(t_philo *philo);
 
 #endif

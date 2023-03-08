@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   utils.c                                        ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:23:05 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/07 23:49:30 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/08 01:21:04 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * @brief  ascii to integer
  * @param  *str: 
- * @retval actual integer or 0
+ * @retval actual integer or 0 if an error happen
 */
 int	ft_atoi(const char *str)
 {
@@ -46,8 +46,16 @@ unsigned long	ft_gettime(void)
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
-void	ft_usleep(unsigned long number)
+/**
+ * @brief  sleep in millisecond
+ * @param  time: time to sleep in ms
+ * @retval None
+*/
+void	ft_usleep(unsigned int time)
 {
-	number = 0;
-	number = ft_gettime();
+	unsigned long	start;
+
+	start = ft_gettime();
+	while (ft_gettime() - start < time)
+		usleep(10);
 }
