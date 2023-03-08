@@ -3,15 +3,20 @@
 /*                                                  if(success){};            */
 /*   utils.c                                        ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:23:05 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/07 01:24:10 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/07 23:49:30 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * @brief  ascii to integer
+ * @param  *str: 
+ * @retval actual integer or 0
+*/
 int	ft_atoi(const char *str)
 {
 	int	num;
@@ -29,12 +34,20 @@ int	ft_atoi(const char *str)
 	return (num);
 }
 
-// get start time in milliseconds and store it in number pointer
-void	ft_gettime(unsigned long *number)
+/**
+ * @brief  retreive current time in milliseconds
+ * @retval time in ms
+*/
+unsigned long	ft_gettime(void)
 {
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	*number = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-	printf("start time: %ld", *number);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
+
+void	ft_usleep(unsigned long number)
+{
+	number = 0;
+	number = ft_gettime();
 }

@@ -3,15 +3,21 @@
 /*                                                  if(success){};            */
 /*   init.c                                         ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:40:44 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/07 09:33:50 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/07 23:57:37 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/**
+ * @brief  set philos data and time in main
+ * @param  *info: struct info pointer
+ * @param  **av: main second parameter
+ * @retval initmutex if malloc doesnt fail
+*/
 int	ft_initinfo(t_info *info, const char **av)
 {
 	unsigned int	i;
@@ -35,10 +41,15 @@ int	ft_initinfo(t_info *info, const char **av)
 		info->philos[i].eat_time = 0;
 		i += 1;
 	}
-	ft_gettime(&info->start);
+	info->start = ft_gettime();
 	return (ft_initmutex_threads(info));
 }
 
+/**
+ * @brief  thread and mutex creation
+ * @param  *info: struct info pointer
+ * @retval EXIT_SUCCESS if everthing went right
+*/
 int	ft_initmutex_threads(t_info *info)
 {
 	int	i;
