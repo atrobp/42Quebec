@@ -6,7 +6,7 @@
 /*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:23:05 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/08 01:21:04 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/08 17:13:29 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ unsigned long	ft_gettime(void)
 /**
  * @brief  sleep in millisecond
  * @param  time: time to sleep in ms
- * @retval None
 */
 void	ft_usleep(unsigned int time)
 {

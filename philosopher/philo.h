@@ -6,7 +6,7 @@
 /*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:23:47 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/08 00:55:15 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/09 08:31:45 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_info
 	bool			is_dead;
 	pthread_mutex_t	writing;
 	pthread_mutex_t	dead;
+	pthread_t		deadis;
 	t_philo			*philos;
 }					t_info;
 
@@ -68,5 +69,7 @@ void				ft_print(t_philo *philo, unsigned int id,
 // ACTION.C
 void				ft_eating(t_philo *philo);
 void				ft_thinking(t_philo *philo);
+void				ft_sleeping(t_philo *philo);
+void				*ft_isdead(void *arg);
 
 #endif

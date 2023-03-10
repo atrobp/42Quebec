@@ -6,27 +6,27 @@
 #    By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝           #
 #                                                   ╚════██║██╔═══╝            #
 #    Created: 2023/03/04 19:47:56 by atopalli            ██║███████╗           #
-#    Updated: 2023/03/08 00:31:44 by atopalli            ╚═╝╚══════╝.qc        #
+#    Updated: 2023/03/08 17:42:11 by atopalli            ╚═╝╚══════╝.qc        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARS
-PROJECT	=	philo
-GCC		=	gcc -Wall -Wextra -Werror -pthread
-RM		=	rm -f
+PROJECT	:=	philo
+GCC		:=	gcc -Wall -Wextra -Werror -pthread
+RM		:=	rm -f
 
 # SRCS
-FILES	=	main.c init.c utils.c philo.c action.c
+FILES	:=	main.c init.c utils.c philo.c action.c
 
 # COLORS
-RED		=	\033[0;31m
-GREEN	=	\033[0;32m
-YELLOW	=	\033[0;33m
-BLUE	=	\033[0;34m
-PURPLE	=	\033[0;35m
-CYAN	=	\033[0;36m
-WHITE	=	\033[0;37m
-RESET	=	\033[0m
+RED		:=	\033[0;31m
+GREEN	:=	\033[0;32m
+YELLOW	:=	\033[0;33m
+BLUE	:=	\033[0;34m
+PURPLE	:=	\033[0;35m
+CYAN	:=	\033[0;36m
+WHITE	:=	\033[0;37m
+RESET	:=	\033[0m
 
 # RULES
 all:		$(PROJECT)

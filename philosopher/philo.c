@@ -6,7 +6,7 @@
 /*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 22:34:17 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/08 01:27:45 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/09 08:11:09 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,15 @@ void	*ft_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	philo->last_meal = ft_gettime();
 	if (philo->philo_id % 2 == 0)
-		ft_usleep(5);
-	while (1 && philo->info->is_dead == false)
+		ft_usleep(10);
+	while (1)
 	{
-		if (philo->last_meal - ft_gettime() > philo->info->t2die)
+		printf("%u--> %lu\n", philo->philo_id, ft_gettime() - philo->last_meal);
+		if (ft_gettime() - philo->last_meal > philo->info->t2die)
 		{
 			ft_print(philo, philo->philo_id, "is dead");
-			pthread_mutex_lock(&philo->info->dead);
-			philo->info->is_dead = true;
-			pthread_mutex_unlock(&philo->info->dead);
+			return (NULL);
 		}
 		ft_eating(philo);
 		ft_thinking(philo);

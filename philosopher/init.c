@@ -6,7 +6,7 @@
 /*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:40:44 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/08 00:57:34 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/09 08:35:30 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_initinfo(t_info *info, const char **av)
 	while (i < info->nbr_philo)
 	{
 		info->philos[i].philo_id = i + 1;
-		info->philos[i].last_meal = 0;
+		info->philos[i].last_meal = ft_gettime();
 		info->philos[i].info = info;
 		info->philos[i].eat_time = 0;
 		i += 1;
@@ -48,7 +48,7 @@ int	ft_initinfo(t_info *info, const char **av)
 /**
  * @brief  thread and mutex creation
  * @param  *info: struct info pointer
- * @retval EXIT_SUCCESS if everthing went right
+ * @retval EXIT_SUCCESS if everthing went OK
 */
 int	ft_initmutex_threads(t_info *info)
 {
@@ -71,9 +71,11 @@ int	ft_initmutex_threads(t_info *info)
 			info->philos[i].right_fork = &info->philos[i + 1].left_fork;
 	}
 	info->philos[i - 1].right_fork = &info->philos[0].left_fork;
+	pthread_create(&info->deadis, NULL, &ft_isdead, (void *)&info);
 	i = -1;
 	while (++i < (int)info->nbr_philo)
 		if (pthread_join(info->philos[i].thread, NULL))
 			return (EXIT_FAILURE);
+	pthread_join(info->deadis, NULL);
 	return (EXIT_SUCCESS);
 }
