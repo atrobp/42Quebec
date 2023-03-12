@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   init.c                                         ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:40:44 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/09 08:35:30 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/10 09:46:16 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ int	ft_initmutex_threads(t_info *info)
 			info->philos[i].right_fork = &info->philos[i + 1].left_fork;
 	}
 	info->philos[i - 1].right_fork = &info->philos[0].left_fork;
-	pthread_create(&info->deadis, NULL, &ft_isdead, (void *)&info);
+	pthread_create(&info->dead_thread, NULL, &ft_isdead, &info);
 	i = -1;
 	while (++i < (int)info->nbr_philo)
 		if (pthread_join(info->philos[i].thread, NULL))
 			return (EXIT_FAILURE);
-	pthread_join(info->deadis, NULL);
+	pthread_join(info->dead_thread, NULL);
 	return (EXIT_SUCCESS);
 }

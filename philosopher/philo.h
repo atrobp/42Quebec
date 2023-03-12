@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   philo.h                                        ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 20:23:47 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/09 08:31:45 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/10 09:47:45 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_info
 	bool			is_dead;
 	pthread_mutex_t	writing;
 	pthread_mutex_t	dead;
-	pthread_t		deadis;
+	pthread_t		dead_thread;
 	t_philo			*philos;
 }					t_info;
 

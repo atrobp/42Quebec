@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   philo.c                                        ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/06 22:34:17 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/09 08:11:09 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/10 08:07:50 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	*ft_routine(void *arg)
 		ft_usleep(10);
 	while (1)
 	{
-		printf("%u--> %lu\n", philo->philo_id, ft_gettime() - philo->last_meal);
 		if (ft_gettime() - philo->last_meal > philo->info->t2die)
 		{
 			ft_print(philo, philo->philo_id, "is dead");

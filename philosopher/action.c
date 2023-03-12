@@ -3,10 +3,10 @@
 /*                                                  if(success){};            */
 /*   action.c                                       ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/08 00:24:55 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/09 16:31:13 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/10 09:52:18 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,19 @@ void	*ft_isdead(void *arg)
 	unsigned int	i;
 	t_info			*info;
 
-	info = (t_info *)arg;
+	info = arg;
 	while (1)
 	{
 		i = 0;
 		while (i < info->nbr_philo)
 		{
-			printf("%lu", ft_gettime() - info->philos[i].last_meal);
+			if (600 > info->t2die)
+			{
+				printf("i is dead");
+				printf("%u\n", i);
+				exit(0);
+			}
+			printf("%u %u\n", i, info->t2die);
 			i += 1;
 		}
 	}
