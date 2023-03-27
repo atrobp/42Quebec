@@ -1,16 +1,15 @@
-FILES	=	megaphone.cpp
-NAME	=	megaphone
-CC		=	c++ -std=c++98
-FLAGS	=	-Wall -Wextra -Werror
-RM		=	rm -f
+NAME	:=	megaphone
+CC		:=	c++ -std=c++98 -Wall -Wextra -Werror
 
-$(NAME): $(FILES)
-	$(CC) $(FLAGS) $(FILES) -o $(NAME)
+$(NAME): $(NAME).cpp
+	$(CC) $(NAME).cpp -o $(NAME)
 
 all: $(NAME)
 
 clean:
-	$(RM) $(NAME)
+	@if [ -f $(NAME) ]; then \
+    	rm -r $(NAME); \
+	fi
 
 fclean: clean
 

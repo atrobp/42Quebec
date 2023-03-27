@@ -6,9 +6,11 @@
 
 class PhoneBook {
 	public:
-		void	addContact();
+		PhoneBook();
+		void 	addContact();
 		void	searchContact();
 	private:
-		std::string _info;
-
+		int 		index;
+		std::string choice;
+		std::string	contacts[8][5];
 };
