@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/28 13:52:53 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/28 23:28:05 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/30 14:28:58 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define EXIT_SUCCESS 0
 # define EXIT_FAILURE 1
 
+# include <limits.h>
 # include <pthread.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -43,8 +44,6 @@ typedef struct s_info
 	bool			end;
 	unsigned long	start;
 	pthread_mutex_t	writing;
-	pthread_mutex_t	dead;
-	pthread_t		reaper;
 	t_philo			*philos;
 }					t_info;
 
@@ -54,6 +53,7 @@ int					ft_atoi(const char *str);
 unsigned long		ft_getcurrenttime(void);
 void				ft_sleeptimer(unsigned int time);
 void				ft_freeall(t_info *info);
+bool				ft_checkdead(t_philo *philo);
 
 // init.c
 
@@ -65,7 +65,7 @@ int					ft_initthreads(t_info *info);
 
 void				ft_eat(t_philo *philo);
 void				*ft_routine(void *arg);
-void				*ft_reaper(void *arg);
+void				ft_reaper(t_info *info);
 void				ft_think(t_philo *philo);
 void				ft_print(t_philo *philo, unsigned int id,
 						const char *action);

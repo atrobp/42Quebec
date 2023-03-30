@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/28 16:20:41 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/28 22:36:05 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/30 14:52:40 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 */
 int	ft_atoi(const char *str)
 {
-	int	num;
-	int	i;
+	long	num;
+	int		i;
 
 	i = 0;
 	num = 0;
@@ -33,7 +33,11 @@ int	ft_atoi(const char *str)
 	{
 		return (0);
 	}
-	return (num);
+	if (num < INT_MIN || num > INT_MAX)
+	{
+		return (0);
+	}
+	return (int)(num);
 }
 
 /**
@@ -70,17 +74,22 @@ void	ft_freeall(t_info *info)
 
 	i = 0;
 	pthread_mutex_destroy(&info->writing);
-	// pthread_mutex_destroy(&info->reaper);
-	if (info->philos)
+	while (i < info->nbr_philo)
 	{
-		while (i < info->nbr_philo)
-		{
-			pthread_mutex_destroy(&info->philos[i].own_fork);
-		}
+		pthread_mutex_unlock(&info->philos[i].own_fork);
+		pthread_mutex_destroy(&info->philos[i].own_fork);
 		i += 1;
 	}
 	if (info->philos)
 	{
 		free(info->philos);
 	}
+}
+
+/**
+ * @brief checks wether a philo is dead or nah
+*/
+bool	ft_checkdead(t_philo *philo)
+{
+	return (philo->info->end);
 }

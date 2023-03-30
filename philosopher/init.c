@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/28 16:18:58 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/29 00:09:51 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/30 14:52:51 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_initinfo(t_info *info, const char **str)
 	unsigned int	i;
 
 	i = 0;
+	info->end = false;
 	info->nbr_philo = ft_atoi(str[1]);
 	info->time2die = ft_atoi(str[2]);
 	info->time2eat = ft_atoi(str[3]);
@@ -48,10 +49,6 @@ int	ft_initthreads(t_info *info)
 	unsigned int	i;
 
 	i = 0;
-	if (pthread_create(&info->reaper, NULL, &ft_reaper, info))
-	{
-		return (EXIT_FAILURE);
-	}
 	while (i < info->nbr_philo)
 	{
 		if (pthread_create(&info->philos[i].thread, NULL, &ft_routine,
@@ -70,10 +67,6 @@ int	ft_initthreads(t_info *info)
 		}
 		i += 1;
 	}
-	if (pthread_join(info->reaper, NULL))
-	{
-		return (EXIT_FAILURE);
-	}
 	return (EXIT_SUCCESS);
 }
 
@@ -83,10 +76,6 @@ int	ft_initmutex(t_info *info)
 
 	i = 0;
 	if (pthread_mutex_init(&info->writing, NULL))
-	{
-		return (EXIT_FAILURE);
-	}
-	if (pthread_mutex_init(&info->dead, NULL))
 	{
 		return (EXIT_FAILURE);
 	}

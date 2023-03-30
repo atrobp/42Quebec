@@ -1,7 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                   if(success){};             #
+#    Makefile                                       ██╗  ██╗██████╗            #
+#                                                   ██║  ██║╚════██╗           #
+#    By: atopalli | github/atrobp                   ███████║ █████╔╝           #
+#                                                   ╚════██║██╔═══╝            #
+#    Created: 2023/03/30 13:01:14 by atopalli            ██║███████╗           #
+#    Updated: 2023/03/30 13:01:59 by atopalli            ╚═╝╚══════╝.qc        #
+#                                                                              #
+# **************************************************************************** #
+
 # VARS
 PROJECT	:=	philo
-# GCC		:=	gcc -Wall -Wextra -Werror -pthread
-GCC		:=	gcc -pthread
+GCC		:=	gcc -Wall -Wextra -Werror -pthread
 RM		:=	rm -f
 
 # SRCS
@@ -38,4 +49,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.phony:		all clean fclean re
