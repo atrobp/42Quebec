@@ -3,47 +3,34 @@
 /*                                                  if(success){};            */
 /*   main.c                                         ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/03/04 19:55:21 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/08 17:49:24 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Created: 2023/03/28 13:51:48 by atopalli            ██║███████╗          */
+/*   Updated: 2023/03/28 23:18:50 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_free(t_info *info)
-{
-	unsigned int	i;
-
-	i = 0;
-	pthread_mutex_destroy(&info->writing);
-	pthread_mutex_destroy(&info->dead);
-	if (info->philos)
-	{
-		while (i < info->nbr_philo)
-		{
-			pthread_mutex_destroy(&info->philos[i].left_fork);
-			i += 1;
-		}
-	}
-	if (info->philos)
-		free(info->philos);
-}
-
-int	main(int argc, const char *argv[])
+int	main(int argc, char const *argv[])
 {
 	int		i;
 	t_info	info;
 
-	i = 0;
+	i = 1;
 	if (argc != 5 && argc != 6)
+	{
+		printf("Error: Invalid number of arguments!\n");
 		return (EXIT_FAILURE);
-	while (++i < argc)
+	}
+	while (i < argc)
 	{
 		if (!(ft_atoi(argv[i]) > EXIT_SUCCESS))
+		{
 			return (EXIT_FAILURE);
+		}
+		i += 1;
 	}
 	ft_initinfo(&info, argv);
-	return (ft_free(&info), EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

@@ -2,9 +2,9 @@
 
 `minishell` |   [subject.pdf](https://cdn.intra.42.fr/pdf/pdf/66947/en.subject.pdf)
 
-:us: The goal of this project is to create a simple shell. Team project | [@alexHonore](https://github.com/alexHonore)
+:us: The goal of this project is to create a simple shell. Team project |
 
-:fr: L'objectif de ce projet est de créer un simple shell. Projet d'equipe | [@alexHonore](https://github.com/alexHonore)
+:fr: L'objectif de ce projet est de créer un simple shell. Projet d'equipe |
 
 - - -
 

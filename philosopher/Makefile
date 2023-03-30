@@ -1,22 +1,11 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                   if(success){};             #
-#    Makefile                                       ██╗  ██╗██████╗            #
-#                                                   ██║  ██║╚════██╗           #
-#    By: atopalli atopalli@student.42quebec.com     ███████║ █████╔╝           #
-#                                                   ╚════██║██╔═══╝            #
-#    Created: 2023/03/04 19:47:56 by atopalli            ██║███████╗           #
-#    Updated: 2023/03/08 17:42:11 by atopalli            ╚═╝╚══════╝.qc        #
-#                                                                              #
-# **************************************************************************** #
-
 # VARS
 PROJECT	:=	philo
-GCC		:=	gcc -Wall -Wextra -Werror -pthread
+# GCC		:=	gcc -Wall -Wextra -Werror -pthread
+GCC		:=	gcc -pthread
 RM		:=	rm -f
 
 # SRCS
-FILES	:=	main.c init.c utils.c philo.c action.c
+FILES	:=	main.c init.c utils.c philo.c
 
 # COLORS
 RED		:=	\033[0;31m
@@ -31,7 +20,7 @@ RESET	:=	\033[0m
 # RULES
 all:		$(PROJECT)
 
-$(PROJECT): $(FILES)
+$(PROJECT): $(FILES) philo.h
 			@for i in $$(seq 1 20); do \
 				printf "\rCompiling $(PROJECT) [$(GREEN)$$((5*i))$(RESET)]"; \
 				sleep 0.023456789; \

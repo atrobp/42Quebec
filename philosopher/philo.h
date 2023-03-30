@@ -5,14 +5,13 @@
 /*                                                  ██║  ██║╚════██╗          */
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/03/06 20:23:47 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/10 09:47:45 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Created: 2023/03/28 13:52:53 by atopalli            ██║███████╗          */
+/*   Updated: 2023/03/28 23:28:05 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
-
 # define EXIT_SUCCESS 0
 # define EXIT_FAILURE 1
 
@@ -26,50 +25,49 @@
 typedef struct s_philo
 {
 	unsigned int	philo_id;
-	unsigned int	eat_time;
+	unsigned int	eaten;
 	unsigned long	last_meal;
 	pthread_t		thread;
-	pthread_mutex_t	left_fork;
-	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	own_fork;
+	pthread_mutex_t	*neigtbour_fork;
 	struct s_info	*info;
 }					t_philo;
 
 typedef struct s_info
 {
 	unsigned int	nbr_philo;
-	unsigned int	t2die;
-	unsigned int	t2eat;
-	unsigned int	t2sleep;
-	unsigned int	n_must_eat;
+	unsigned int	time2die;
+	unsigned int	time2eat;
+	unsigned int	time2sleep;
+	int				nbr_eat;
+	bool			end;
 	unsigned long	start;
-	bool			is_dead;
 	pthread_mutex_t	writing;
 	pthread_mutex_t	dead;
-	pthread_t		dead_thread;
+	pthread_t		reaper;
 	t_philo			*philos;
 }					t_info;
 
-// UTILS.C
+// utils
 
 int					ft_atoi(const char *str);
-unsigned long		ft_gettime(void);
-void				ft_usleep(unsigned int time);
+unsigned long		ft_getcurrenttime(void);
+void				ft_sleeptimer(unsigned int time);
+void				ft_freeall(t_info *info);
 
-// INIT.C
+// init.c
 
-int					ft_initinfo(t_info *info, const char **av);
-int					ft_initmutex_threads(t_info *info);
+int					ft_initinfo(t_info *info, const char **str);
+int					ft_initmutex(t_info *info);
+int					ft_initthreads(t_info *info);
 
-// PHILO.C
+// routine.c
 
-void				*ft_routine(void *info);
+void				ft_eat(t_philo *philo);
+void				*ft_routine(void *arg);
+void				*ft_reaper(void *arg);
+void				ft_think(t_philo *philo);
 void				ft_print(t_philo *philo, unsigned int id,
 						const char *action);
-
-// ACTION.C
-void				ft_eating(t_philo *philo);
-void				ft_thinking(t_philo *philo);
-void				ft_sleeping(t_philo *philo);
-void				*ft_isdead(void *arg);
 
 #endif
