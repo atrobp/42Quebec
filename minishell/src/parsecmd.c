@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/30 22:56:32 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/31 13:00:54 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/31 18:36:19 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_parsecmd(char **input, t_cmd *cmd)
 			l++;
 		}
 		cmd->cmds[k][l] = '\0';
+		ft_trimquotes(cmd->cmds[k]);
 		while (input[i][j] == ' ')
 		{
 			j++;

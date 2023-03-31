@@ -6,7 +6,7 @@
 #    By: atopalli | github/atrobp                   ███████║ █████╔╝           #
 #                                                   ╚════██║██╔═══╝            #
 #    Created: 2023/03/30 20:57:48 by atopalli            ██║███████╗           #
-#    Updated: 2023/03/31 13:38:20 by atopalli            ╚═╝╚══════╝.qc        #
+#    Updated: 2023/03/31 18:37:58 by atopalli            ╚═╝╚══════╝.qc        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ UTILS	:=	utils/
 
 # Files
 
-FILES	:=	$(SRC)main.c $(SRC)envp.c $(SRC)parsecmd.c $(SRC)getenv.c $(SRC)builtins.c $(SRC)execve.c $(SRC)createpath.c
+FILES	:=	$(SRC)main.c $(SRC)envp.c $(SRC)parsecmd.c $(SRC)getenv.c $(SRC)builtins.c $(SRC)execve.c $(SRC)createpath.c $(SRC)trimquotes.c
 FILES	+=	$(UTILS)strdup.c $(UTILS)split.c $(UTILS)strlen.c $(UTILS)write.c $(UTILS)strncmp.c
 
 # Readline

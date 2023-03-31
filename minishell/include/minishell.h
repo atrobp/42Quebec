@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/30 21:07:09 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/31 13:34:09 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/31 18:46:29 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ char		*ft_strdup(const char *s1);
 int			ft_strlen(const char *s);
 void		ft_putchar(char c);
 void		ft_putstr(char *s);
+char		*ft_trimquotes(char *str);
+int			ft_cout_dquotes(char *str);
+int			ft_strstr(char *str, char *to_find);
+int			ft_strnstr(char *str, char *to_find, int n);
 
 // dealing with builtins
 

@@ -1,46 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                  if(success){};            */
-/*   builtins.c                                     ██╗  ██╗██████╗           */
+/*   strstr.c                                       ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/03/31 11:12:58 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/31 18:50:55 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Created: 2023/03/31 18:40:44 by atopalli            ██║███████╗          */
+/*   Updated: 2023/03/31 18:43:35 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	ft_echo(t_shell *shell, char *cmd, char *arg)
+int	ft_strstr(char *str, char *to_find)
 {
 	int	i;
-	int	newline;
+	int	j;
 
-	(void)shell;
-	(void)cmd;
 	i = 0;
-	newline = 1;
-	if (arg[i] == '-')
+	j = 0;
+	while (str[i])
 	{
-		while (arg[++i] == 'n')
+		while (str[i] == to_find[j])
 		{
-			newline = 0;
-		}
-		while (arg[i] == ' ')
 			i++;
-	}
-	if (arg[i] == '\'' || arg[i] == '\"')
-	{
+			j++;
+		}
+		if (to_find[j] == '\0')
+		{
+			return (1);
+		}
 		i++;
 	}
-	while (arg[i] != '\'' && arg[i] != '\"' && arg[i] != '\0')
+	return (0);
+}
+
+int	ft_strnstr(char *str, char *to_find, int n)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (str[i] && i < n)
 	{
-		printf("%c", arg[i]);
+		while (str[i] == to_find[j])
+		{
+			i++;
+			j++;
+		}
+		if (to_find[j] == '\0')
+		{
+			return (1);
+		}
 		i++;
 	}
-	if (newline == 1)
-	{
-		printf("\n");
-	}
+	return (0);
 }
