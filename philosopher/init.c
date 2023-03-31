@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/28 16:18:58 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/30 14:52:51 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/30 20:39:48 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,6 @@ int	ft_initthreads(t_info *info)
 	{
 		if (pthread_create(&info->philos[i].thread, NULL, &ft_routine,
 				&info->philos[i]))
-		{
-			return (EXIT_FAILURE);
-		}
-		i += 1;
-	}
-	i = 0;
-	while (i < info->nbr_philo)
-	{
-		if (pthread_join(info->philos[i].thread, NULL))
 		{
 			return (EXIT_FAILURE);
 		}

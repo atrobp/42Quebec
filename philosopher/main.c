@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/28 13:51:48 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/30 14:48:48 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/30 20:51:35 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ int	main(int argc, char const *argv[])
 	}
 	ft_initinfo(&info, argv);
 	ft_reaper(&info);
-	ft_freeall(&info);
 	return (EXIT_SUCCESS);
 }

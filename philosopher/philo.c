@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/28 18:05:31 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/30 14:45:08 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/30 20:42:52 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,6 @@ void	ft_eat(t_philo *philo)
 
 void	ft_print(t_philo *philo, unsigned int id, const char *action)
 {
-	if (ft_checkdead(philo))
-	{
-		return ;
-	}
 	pthread_mutex_lock(&philo->info->writing);
 	printf("%lu %u %s\n", ft_getcurrenttime() - philo->info->start, id, action);
 	pthread_mutex_unlock(&philo->info->writing);
@@ -70,7 +66,11 @@ void	ft_reaper(t_info *info)
 			if (ft_getcurrenttime()
 				- info->philos[i].last_meal > info->time2die)
 			{
-				ft_print(&info->philos[i], i + 1, "is dead");
+				pthread_mutex_lock(&info->writing);
+				printf("%lu %u is dead\n", ft_getcurrenttime() - info->start, i
+						+ 1);
+				ft_freeall(info);
+				pthread_mutex_unlock(&info->writing);
 				return ;
 			}
 			i += 1;
