@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/30 21:22:19 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/31 01:14:57 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/31 11:07:51 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ char	**ft_split(char *str, char c)
 
 	i = 0;
 	j = -1;
+	if (ft_strlen(str) == 0)
+	{
+		return (NULL);
+	}
 	array = (char **)malloc(sizeof(char *) * (ft_strlen(str) + 1));
 	if (!array)
 		return (NULL);

@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                  if(success){};            */
-/*   envp.c                                         ██╗  ██╗██████╗           */
+/*   builtins.c                                     ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/03/30 21:10:30 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/31 11:49:15 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Created: 2023/03/31 11:12:58 by atopalli            ██║███████╗          */
+/*   Updated: 2023/03/31 13:01:54 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-/**
- * @brief Create a new envrionment
- * @param envp The environment to copy from
- * @return Shell struct with the new environment and the path
-*/
-t_env	ft_envp(char **envp)
+void	ft_echo(t_shell *shell, char *cmd, char *arg)
 {
-	t_env	env;
-	int		i;
+	int	i;
+	int	newline;
 
+	(void)shell;
+	(void)cmd;
 	i = 0;
-	while (envp[i])
-		i++;
-	env.envp = (char **)malloc(sizeof(char *) * (i + 1));
-	i = 0;
-	while (envp[i])
+	newline = 1;
+	if (arg[i] == '-')
 	{
-		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
+		while (arg[++i] == 'n')
 		{
-			env.path = ft_split(envp[i] + 5, ':');
+			newline = 0;
 		}
-		env.envp[i] = ft_strdup(envp[i]);
+		while (arg[i] == ' ')
+			i++;
+	}
+	if (arg[i] == '\'' || arg[i] == '\"')
+		i++;
+	while (arg[i] != '\'' && arg[i] != '\"' && arg[i] != '\0')
+	{
+		printf("%c", arg[i]);
 		i++;
 	}
-	env.envp[i] = NULL;
-	return (env);
+	if (newline == 1)
+		printf("\n");
 }

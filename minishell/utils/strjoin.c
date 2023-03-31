@@ -1,41 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                  if(success){};            */
-/*   envp.c                                         ██╗  ██╗██████╗           */
+/*   strjoin.c                                      ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/03/30 21:10:30 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/31 11:49:15 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Created: 2023/03/31 10:57:39 by atopalli            ██║███████╗          */
+/*   Updated: 2023/03/31 10:57:55 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
 /**
- * @brief Create a new envrionment
- * @param envp The environment to copy from
- * @return Shell struct with the new environment and the path
-*/
-t_env	ft_envp(char **envp)
+ * @brief Join two strings
+ * 
+ * @param s1 The first string
+ * @param s2 The second string
+ * @return The joined string
+ */
+char	*ft_strjoin(char *s1, char *s2)
 {
-	t_env	env;
+	char	*str;
 	int		i;
+	int		j;
 
 	i = 0;
-	while (envp[i])
-		i++;
-	env.envp = (char **)malloc(sizeof(char *) * (i + 1));
-	i = 0;
-	while (envp[i])
+	j = 0;
+	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!str)
 	{
-		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
-		{
-			env.path = ft_split(envp[i] + 5, ':');
-		}
-		env.envp[i] = ft_strdup(envp[i]);
+		return (NULL);
+	}
+	while (s1[i])
+	{
+		str[i] = s1[i];
 		i++;
 	}
-	env.envp[i] = NULL;
-	return (env);
+	while (s2[j])
+	{
+		str[i] = s2[j];
+		i++;
+		j++;
+	}
+	str[i] = '\0';
+	return (str);
 }

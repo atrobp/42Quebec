@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                  if(success){};            */
-/*   envp.c                                         ██╗  ██╗██████╗           */
+/*   getenv.c                                       ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/03/30 21:10:30 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/31 11:49:15 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Created: 2023/03/31 10:49:16 by atopalli            ██║███████╗          */
+/*   Updated: 2023/03/31 10:54:26 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
 /**
- * @brief Create a new envrionment
- * @param envp The environment to copy from
- * @return Shell struct with the new environment and the path
+ * @brief Get the value of a variable from our environment
+ * @param shell The shell struct
+ * @param var The variable to get the value from
+ * @return The value of the variable or NULL if it doesn't exist
 */
-t_env	ft_envp(char **envp)
+char	*ft_getenv(t_shell *shell, char *var)
 {
-	t_env	env;
-	int		i;
+	int	i;
+	int	j;
 
 	i = 0;
-	while (envp[i])
-		i++;
-	env.envp = (char **)malloc(sizeof(char *) * (i + 1));
-	i = 0;
-	while (envp[i])
+	while (shell->env.envp[i])
 	{
-		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
+		j = 0;
+		while (shell->env.envp[i][j] == var[j])
 		{
-			env.path = ft_split(envp[i] + 5, ':');
+			j++;
 		}
-		env.envp[i] = ft_strdup(envp[i]);
+		if (shell->env.envp[i][j] == '=')
+		{
+			return (shell->env.envp[i] + j + 1);
+		}
 		i++;
 	}
-	env.envp[i] = NULL;
-	return (env);
+	return (NULL);
 }

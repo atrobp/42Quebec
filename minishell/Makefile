@@ -6,7 +6,7 @@
 #    By: atopalli | github/atrobp                   ███████║ █████╔╝           #
 #                                                   ╚════██║██╔═══╝            #
 #    Created: 2023/03/30 20:57:48 by atopalli            ██║███████╗           #
-#    Updated: 2023/03/31 01:36:06 by atopalli            ╚═╝╚══════╝.qc        #
+#    Updated: 2023/03/31 13:38:20 by atopalli            ╚═╝╚══════╝.qc        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,12 +23,12 @@ UTILS	:=	utils/
 
 # Files
 
-FILES	:=	$(SRC)main.c $(SRC)envp.c $(SRC)parsecmd.c
+FILES	:=	$(SRC)main.c $(SRC)envp.c $(SRC)parsecmd.c $(SRC)getenv.c $(SRC)builtins.c $(SRC)execve.c $(SRC)createpath.c
 FILES	+=	$(UTILS)strdup.c $(UTILS)split.c $(UTILS)strlen.c $(UTILS)write.c $(UTILS)strncmp.c
 
 # Readline
+
 RLPATH	:=	 $(whereis libreadline.a) $(whereis libhistory.a)
-# RLINE	:=	 -lreadline /usr/lib/x86_64-linux-gnu/libreadline.a /usr/lib/x86_64-linux-gnu/libhistory.a
 RLINE	:=	 -lreadline $(RLPATH)
 
 # Colors
@@ -51,7 +51,7 @@ $(PROJECT): $(FILES)
 	@echo "Compiling"
 	@for i in $(FILES); do \
 		echo "$(CYAN)$$i$(RESET)"; \
-		sleep 0.1; \
+		sleep 0.09; \
 	done
 	@echo "$(GREEN)$(PROJECT) created$(RESET)"
 
@@ -65,7 +65,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re myprint
 
 
 
@@ -96,5 +96,5 @@ myprint:
 	@printf "$(PURPLE)%-66s\n"	"#     # #######    #          # #     # #       #       #" 
 	@printf "$(CYAN)%-66s\n"	"#     # #     #    #    #     # #     # #       #       #" 
 	@printf "$(WHITE)%63s\n"	 "#####  #     #    #     #####  #     # ####### ####### #######"
-	@printf "$(RED)%63s" "made with love <3"peek
+	@printf "$(RED)%63s" "made with love <3"
 	@printf "\n"
