@@ -1,46 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                  if(success){};            */
-/*   builtins.c                                     ██╗  ██╗██████╗           */
+/*   strccpy.c                                      ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/03/31 11:12:58 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/31 18:50:55 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Created: 2023/04/01 00:04:03 by atopalli            ██║███████╗          */
+/*   Updated: 2023/04/01 00:04:12 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "minishell.h"
 
-void	ft_echo(t_shell *shell, char *cmd, char *arg)
+char	*ft_strccpy(char *dest, char *src, char c)
 {
 	int	i;
-	int	newline;
 
-	(void)shell;
-	(void)cmd;
 	i = 0;
-	newline = 1;
-	if (arg[i] == '-')
+	while (src[i] != c && src[i])
 	{
-		while (arg[++i] == 'n')
-		{
-			newline = 0;
-		}
-		while (arg[i] == ' ')
-			i++;
+		dest[i] = src[i];
+		i += 1;
 	}
-	if (arg[i] == '\'' || arg[i] == '\"')
-	{
-		i++;
-	}
-	while (arg[i] != '\'' && arg[i] != '\"' && arg[i] != '\0')
-	{
-		printf("%c", arg[i]);
-		i++;
-	}
-	if (newline == 1)
-	{
-		printf("\n");
-	}
+	dest[i] = '\0';
+	return (dest);
 }

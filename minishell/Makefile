@@ -6,15 +6,16 @@
 #    By: atopalli | github/atrobp                   ███████║ █████╔╝           #
 #                                                   ╚════██║██╔═══╝            #
 #    Created: 2023/03/30 20:57:48 by atopalli            ██║███████╗           #
-#    Updated: 2023/03/31 18:37:58 by atopalli            ╚═╝╚══════╝.qc        #
+#    Updated: 2023/04/02 10:24:36 by atopalli            ╚═╝╚══════╝.qc        #
 #                                                                              #
 # **************************************************************************** #
 
 # Vars
 
 PROJECT	:=	minishell
-FLAGS	:=	-Wall -Werror -Wextra
+FLAGS	:=	-Wall -Werror -Wextra -Iinclude/
 CC		:=	gcc $(FLAGS)
+TARGET	:=	bin/$(PROJECT)
 
 # Files folder
 
@@ -23,8 +24,12 @@ UTILS	:=	utils/
 
 # Files
 
-FILES	:=	$(SRC)main.c $(SRC)envp.c $(SRC)parsecmd.c $(SRC)getenv.c $(SRC)builtins.c $(SRC)execve.c $(SRC)createpath.c $(SRC)trimquotes.c
-FILES	+=	$(UTILS)strdup.c $(UTILS)split.c $(UTILS)strlen.c $(UTILS)write.c $(UTILS)strncmp.c
+# FILES	:=	$(SRC)main.c $(SRC)envp.c $(SRC)parsecmd.c $(SRC)getenv.c $(SRC)builtins.c $(SRC)execve.c $(SRC)createpath.c $(SRC)trimquotes.c
+# FILES	+=	$(UTILS)strdup.c $(UTILS)split.c $(UTILS)strlen.c $(UTILS)write.c $(UTILS)strncmp.c
+FILES	:=	$(SRC)main.c $(SRC)starting.c $(SRC)parsing.c $(SRC)executing.c
+
+FILES	+=	$(UTILS)split.c $(UTILS)strdup.c $(UTILS)strlen.c \
+			$(UTILS)strncmp.c $(UTILS)alloc.c $(UTILS)strccpy.c $(UTILS)signals.c 
 
 # Readline
 
@@ -44,20 +49,17 @@ RESET	:=	\033[0m
 
 # Rules
 
-all: $(PROJECT) myprint
+all: $(TARGET)
 
-$(PROJECT): $(FILES)
-	@$(CC) -o $(PROJECT) $(FILES) $(RLINE)
-	@echo "Compiling"
-	@for i in $(FILES); do \
-		echo "$(CYAN)$$i$(RESET)"; \
-		sleep 0.09; \
-	done
+$(TARGET): $(FILES)
+	@$(CC) -o $@ $(FILES) $(RLINE)
+	$(call compiling,$(FILES))
 	@echo "$(GREEN)$(PROJECT) created$(RESET)"
+	$(call myprint)
 
 clean:
-	@if [ -f $(PROJECT) ]; then \
-		rm -rf $(PROJECT); \
+	@if [ -f $(TARGET) ]; then \
+		rm -rf bin/$(PROJECT); \
 		echo "$(RED)$(PROJECT) deleted$(RESET)"; \
 	fi
 
@@ -77,6 +79,12 @@ re: fclean all
 
 
 
+compiling = \
+	@echo "Compiling"; \
+	for i in $1; do \
+		echo "$(CYAN)$$i$(RESET)"; \
+		sleep 0.09; \
+	done
 
 
 
@@ -84,17 +92,15 @@ re: fclean all
 
 
 
-
-
-myprint:
-	@printf "\n\n"
-	@printf "Welcome to\n"
-	@printf "$(RED)%57s\n"		 "#####     #    #     #  #####  #     # ####### #       #"
-	@printf "$(GREEN)%-66s\n"	"#     #   # #    #   #  #     # #     # #       #       #" 
-	@printf "$(YELLOW)%-66s\n"	"#        #   #    # #   #       #     # #       #       #" 
-	@printf "$(BLUE)%-66s\n"	"#  #### #     #    #     #####  ####### #####   #       #" 
-	@printf "$(PURPLE)%-66s\n"	"#     # #######    #          # #     # #       #       #" 
-	@printf "$(CYAN)%-66s\n"	"#     # #     #    #    #     # #     # #       #       #" 
-	@printf "$(WHITE)%63s\n"	 "#####  #     #    #     #####  #     # ####### ####### #######"
-	@printf "$(RED)%63s" "made with love <3"
-	@printf "\n"
+myprint = \
+	printf "\n\n"; \
+	printf "Welcome to\n";\
+	printf "$(RED)%57s\n"		 "#####     #    #     #  #####  #     # ####### #       #"; \
+	printf "$(GREEN)%-66s\n"	"#     #   # #    #   #  #     # #     # #       #       #"  ; \
+	printf "$(YELLOW)%-66s\n"	"#        #   #    # #   #       #     # #       #       #"  ; \
+	printf "$(BLUE)%-66s\n"	"#  #### #     #    #     #####  ####### #####   #       #"  ; \
+	printf "$(PURPLE)%-66s\n"	"#     # #######    #          # #     # #       #       #"  ; \
+	printf "$(CYAN)%-66s\n"	"#     # #     #    #    #     # #     # #       #       #"  ; \
+	printf "$(WHITE)%63s\n"	 "#####  #     #    #     #####  #     # ####### ####### #######" ; \
+	printf "$(RED)%63s" "made with love <3" ; \
+	printf "\n" ; \

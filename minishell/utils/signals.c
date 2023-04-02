@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                  if(success){};            */
-/*   strlen.c                                       ██╗  ██╗██████╗           */
+/*   signals.c                                      ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/03/31 21:29:46 by atopalli            ██║███████╗          */
-/*   Updated: 2023/04/02 09:50:24 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Created: 2023/04/01 17:30:21 by atopalli            ██║███████╗          */
+/*   Updated: 2023/04/01 17:50:13 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_strlen(const char *s, int c)
+void	ft_sighandler(int sig)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] && s[i] != c)
+	if (sig == SIGINT)
 	{
-		if (s[i] == c)
-		{
-			return (i);
-		}
-		i++;
+		putchar('\n');
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
 	}
-	return (i);
 }

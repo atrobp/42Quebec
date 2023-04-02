@@ -5,40 +5,19 @@
 /*                                                  ██║  ██║╚════██╗          */
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/03/30 21:06:24 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/31 15:06:16 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Created: 2023/03/31 20:27:08 by atopalli            ██║███████╗          */
+/*   Updated: 2023/04/01 17:51:31 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envt)
 {
-	char	*input;
-	char	**split;
-	t_shell	shell;
-	int		i;
-
 	(void)argc;
 	(void)argv;
-	(void)envp;
-	shell.env = ft_envp(envp);
-	while (1)
-	{
-		i = 0;
-		input = readline(PROMPT);
-		add_history(input);
-		split = ft_split(input, '|');
-		ft_parsecmd(split, &shell.cmd);
-		while (shell.cmd.cmds[i])
-		{
-			printf("cmd:'%s' args:'%s'", shell.cmd.cmds[i], shell.cmd.args[i]);
-			printf("\n");
-			ft_execve(&shell, shell.cmd.cmds[i], shell.cmd.args[i]);
-			i++;
-		}
-		free(input);
-		free(split);
-	}
+	signal(SIGINT, ft_sighandler);
+	signal(SIGQUIT, ft_sighandler);
+	ft_startshell(ft_initshell(envt));
 	return (0);
 }

@@ -1,33 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                  if(success){};            */
-/*   strdup.c                                       ██╗  ██╗██████╗           */
+/*   alloc.c                                        ██╗  ██╗██████╗           */
 /*                                                  ██║  ██║╚════██╗          */
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/03/31 21:30:22 by atopalli            ██║███████╗          */
-/*   Updated: 2023/04/02 10:06:24 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Created: 2023/03/31 21:58:47 by atopalli            ██║███████╗          */
+/*   Updated: 2023/04/02 09:42:42 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_strdup(const char *s1)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char	*str;
-	int		i;
+	void	*ptr;
+	size_t	i;
 
 	i = 0;
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1, 0) + 1));
-	if (!str)
+	ptr = malloc(count * size);
+	if (!ptr)
 	{
 		return (NULL);
 	}
-	while (s1[i])
+	while (i < count * size)
 	{
-		str[i] = s1[i];
-		i++;
+		((char *)ptr)[i] = 0;
+		i += 1;
 	}
-	str[i] = '\0';
-	return (str);
+	return (ptr);
+}
+
+void	*ft_realloc(void *ptr, size_t size)
+{
+	void	*new;
+	size_t	i;
+
+	i = 0;
+	new = malloc(size);
+	if (!new)
+	{
+		return (NULL);
+	}
+	while (((char *)ptr)[i])
+	{
+		((char *)new)[i] = ((char *)ptr)[i];
+		i += 1;
+	}
+	while (i < size)
+	{
+		((char *)new)[i] = 0;
+		i += 1;
+	}
+	free(ptr);
+	return (new);
 }
