@@ -6,7 +6,7 @@
 #    By: atopalli | github/atrobp                   ███████║ █████╔╝           #
 #                                                   ╚════██║██╔═══╝            #
 #    Created: 2023/03/30 20:57:48 by atopalli            ██║███████╗           #
-#    Updated: 2023/04/02 10:33:34 by atopalli            ╚═╝╚══════╝.qc        #
+#    Updated: 2023/04/04 10:39:29 by atopalli            ╚═╝╚══════╝.qc        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,43 +20,37 @@ TARGET	:=	bin/$(PROJECT)
 # Files folder
 
 SRC		:=	src/
-UTILS	:=	utils/
+PARSE	:=	utils/parsing/
+LIB		:=	utils/libft/
 
 # Srcs files
 
-# FILES	:=	$(SRC)main.c $(SRC)envp.c $(SRC)parsecmd.c $(SRC)getenv.c $(SRC)builtins.c $(SRC)execve.c $(SRC)createpath.c $(SRC)trimquotes.c
-# FILES	+=	$(UTILS)strdup.c $(UTILS)split.c $(UTILS)strlen.c $(UTILS)write.c $(UTILS)strncmp.c
 FILES	:=	$(SRC)main.c $(SRC)starting.c $(SRC)parsing.c $(SRC)executing.c
 
-# Utils files
+# Parse files
 
-FILES	+=	$(UTILS)split.c $(UTILS)strdup.c $(UTILS)strlen.c \
-			$(UTILS)strncmp.c $(UTILS)alloc.c $(UTILS)strccpy.c $(UTILS)signals.c 
+FILES	+= $(PARSE)cmds.c $(PARSE)token.c
+
+# Lib files
+
+FILES	+=	$(LIB)split.c $(LIB)strdup.c $(LIB)strlen.c $(LIB)strncmp.c \
+			$(LIB)alloc.c $(LIB)strccpy.c $(LIB)signals.c $(LIB)free.c \
+			
 
 # Readline
 
 RLPATH	:=	 $(whereis libreadline.a) $(whereis libhistory.a)
 RLINE	:=	 -lreadline $(RLPATH)
 
-# Colors
-
-RED		:=	\033[0;31m
-GREEN	:=	\033[0;32m
-YELLOW	:=	\033[0;33m
-BLUE	:=	\033[0;34m
-PURPLE	:=	\033[0;35m
-CYAN	:=	\033[0;36m
-WHITE	:=	\033[0;37m
-RESET	:=	\033[0m
-
 # Rules
 
-all: $(TARGET) myprint
+all: $(TARGET)
 
 $(TARGET): $(FILES) 
 	@$(CC) -o $@ $(FILES) $(RLINE)
 	$(call compiling,$(FILES))
 	@echo "$(GREEN)$(PROJECT) created$(RESET)"
+	@$(MAKE) -s myprint
 
 clean:
 	@if [ -f $(TARGET) ]; then \
@@ -68,7 +62,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re myprint
+.phony: all clean fclean re myprint
 
 
 
@@ -77,6 +71,16 @@ re: fclean all
 
 
 
+# Colors
+
+RED		:=	\033[1;31m
+GREEN	:=	\033[1;32m
+YELLOW	:=	\033[1;33m
+BLUE	:=	\033[1;34m
+PURPLE	:=	\033[1;35m
+CYAN	:=	\033[1;36m
+WHITE	:=	\033[1;37m
+RESET	:=	\033[0m
 
 
 # Compiling function
@@ -93,13 +97,12 @@ compiling = \
 
 myprint:
 	@printf "\n\n"
-	@printf "Welcome to\n"
-	@printf "$(RED)%57s\n"		 "#####     #    #     #  #####  #     # ####### #       #"
-	@printf "$(GREEN)%-66s\n"	"#     #   # #    #   #  #     # #     # #       #       #" 
-	@printf "$(YELLOW)%-66s\n"	"#        #   #    # #   #       #     # #       #       #" 
-	@printf "$(BLUE)%-66s\n"	"#  #### #     #    #     #####  ####### #####   #       #" 
-	@printf "$(PURPLE)%-66s\n"	"#     # #######    #          # #     # #       #       #" 
-	@printf "$(CYAN)%-66s\n"	"#     # #     #    #    #     # #     # #       #       #" 
-	@printf "$(WHITE)%63s\n"	 "#####  #     #    #     #####  #     # ####### ####### #######"
-	@printf "$(RED)%63s" "made with love <3"
+	@printf "$(WHITE)Welcome to\n"
+	@printf "$(RED)%57s\n"		"╔═══╗╔═══╗╔╗  ╔╗╔═══╗╔╗ ╔╗╔═══╗╔╗   ╔╗"
+	@printf "$(YELLOW)%-66s\n"	"║╔═╗║║╔═╗║║╚╗╔╝║║╔═╗║║║ ║║║╔══╝║║   ║║" 
+	@printf "$(YELLOW)%-66s\n"	"║║ ╚╝║║ ║║╚╗╚╝╔╝║╚══╗║╚═╝║║╚══╗║║   ║║" 
+	@printf "$(GREEN)%-66s\n"	"║║╔═╗║╚═╝║ ╚╗╔╝ ╚══╗║║╔═╗║║╔══╝║║ ╔╗║║ ╔╗" 
+	@printf "$(BLUE)%-66s\n"	"║╚╩═║║╔═╗║  ║║  ║╚═╝║║║ ║║║╚══╗║╚═╝║║╚═╝║" 
+	@printf "$(PURPLE)%-66s\n"	"╚═══╝╚╝ ╚╝  ╚╝  ╚═══╝╚╝ ╚╝╚═══╝╚═══╝╚═══╝" 
+	@printf "$(WHITE)%41s" "made with love <3"
 	@printf "\n"

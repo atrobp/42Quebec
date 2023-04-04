@@ -6,13 +6,14 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/30 21:07:09 by atopalli            ██║███████╗          */
-/*   Updated: 2023/04/02 09:49:22 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/04/04 10:15:46 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-# define PROMPT "m\033[0;32mi\033[0mn\033[0;32mi\033[0mshell\033[0;32m>\033[0m "
+# define PROMPT "\033[1;37mm\033[1;32mi\033[1;37mni\033[1;32ms\033[1;37mhe\033[1;32mll\033[1;37m>\033[1;32m \033[0m"
+# define PROMPT2 "\033[1;37mm\033[1;32mi\033[1;37mni\033[1;32ms\033[1;37mhe\033[1;32mll\033[0m"
 
 # include <dirent.h>
 # include <errno.h>
@@ -48,6 +49,8 @@ typedef struct s_cmd
 
 typedef struct s_shell
 {
+	char	**cmds;
+	char	**args;
 	char	**path;
 	char	*input;
 	char	**envt;
@@ -60,9 +63,12 @@ typedef struct s_shell
 void		ft_startshell(t_shell *shell);
 t_shell		*ft_initshell(char **envt);
 
-// where we deal with the input / commands
+// where we parse -- (parsing folder)
 
 void		ft_parser(t_shell *shell);
+int			ft_verifytokens(char **array);
+int			ft_tokenize(t_shell *shell, char **array);
+void		ft_create_cmds(t_shell *shell, char **array);
 
 // where we deal with the input
 
@@ -79,5 +85,10 @@ void		ft_free(t_shell *shell);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strccpy(char *dest, char *src, char c);
 void		ft_sighandler(int sig);
+
+// where we free the memory
+
+void		ft_freeptr(char *ptr);
+void		ft_freeptrptr(char **ptr);
 
 #endif

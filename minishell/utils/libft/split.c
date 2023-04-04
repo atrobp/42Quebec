@@ -6,11 +6,27 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/03/31 21:24:24 by atopalli            ██║███████╗          */
-/*   Updated: 2023/04/02 10:06:54 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/04/02 12:33:29 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	ft_getlen(char *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while (*s)
+	{
+		if (*s == c)
+		{
+			i++;
+		}
+		s++;
+	}
+	return (i);
+}
 
 char	**ft_split(char *s, char c)
 {
@@ -20,7 +36,7 @@ char	**ft_split(char *s, char c)
 
 	i = 0;
 	j = -1;
-	array = (char **)malloc(sizeof(char *) * (ft_strlen(s, 0) + 1));
+	array = (char **)malloc(sizeof(char *) * ft_getlen(s, '|') + 1);
 	if (!array)
 		return (NULL);
 	array[i] = (char *)malloc(sizeof(char) * (ft_strlen(s, 0) + 1));
